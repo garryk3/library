@@ -22,7 +22,7 @@ jobs:
     - name: install dependencies
       uses: ./action
       with:
-        args: pub get
+        args: flutter pub get
 
     - name: build apk
       uses: ./action
