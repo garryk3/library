@@ -18,8 +18,11 @@ class CalibreRepository {
 
   CalibreRepository._private();
 
-  Future<T> _handleCommand<T>(Function func, List<dynamic> positionalArguments,
-      [Map<Symbol, dynamic> namedArguments]) async {
+  Future<T> _handleCommand<T>(
+    Function func,
+    List<dynamic> positionalArguments, [
+    Map<Symbol, dynamic> namedArguments,
+  ]) async {
     T data;
     // _loaderBloc.add(LoaderEventShow());
     try {
@@ -45,5 +48,9 @@ class CalibreRepository {
 
   Future<List<Map<String, dynamic>>> loadBooks({dynamic filters}) async {
     return _handleCommand<List<Map<String, dynamic>>>(_dbProvider.commands.loadBooks, null);
+  }
+
+  Future<List<Map<String, dynamic>>> loadBookInfo(int id) async {
+    return _handleCommand<List<Map<String, dynamic>>>(_dbProvider.commands.loadBookInfo, [id]);
   }
 }

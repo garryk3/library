@@ -42,7 +42,7 @@ class _AppState extends State<LibraryApp> {
     _loaderBloc = LoaderBloc();
     _calibreRepository = CalibreRepository(_errorBloc, _loaderBloc);
     _appBloc = AppBloc(_calibreRepository)..add(AppEventInitialize());
-    _bookInfoBloc = BookinfoBloc();
+    _bookInfoBloc = BookinfoBloc(_calibreRepository);
     super.initState();
   }
 

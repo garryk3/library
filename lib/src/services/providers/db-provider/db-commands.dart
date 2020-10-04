@@ -20,7 +20,7 @@ class DbCommands {
     return path;
   }
 
-  Future<List<Map<String, dynamic>>> loadBooks() {
-    return _db.rawQuery(selectCalibreBooks);
-  }
+  Future<List<Map<String, dynamic>>> loadBooks() => _db.rawQuery(selectCalibreBooks);
+
+  Future<List<Map<String, dynamic>>> loadBookInfo(int id) => _db.rawQuery(selectCalibreBookInfo, [id]);
 }

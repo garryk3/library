@@ -49,11 +49,12 @@ class Library extends StatelessWidget {
                     ),
                     itemCount: state.total,
                     itemBuilder: (BuildContext context, int index) {
+                      final BookModel model = state.books[index];
                       return GestureDetector(
                         onTap: () {
-                          bloc.goToBookInfo(context);
+                          bloc.goToBookInfo(context, model.bookId);
                         },
-                        child: Book(state.books[index]),
+                        child: Book(model),
                       );
                     });
               }
