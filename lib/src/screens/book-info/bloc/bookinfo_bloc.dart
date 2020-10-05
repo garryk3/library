@@ -7,9 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:library/src/repositories/repositories.dart';
-import 'package:library/src/screens/library/library.dart';
 
-import '../models/book-info-model.dart';
+import '../book-info.dart';
 
 part 'bookinfo_event.dart';
 part 'bookinfo_state.dart';
@@ -25,11 +24,11 @@ class BookinfoBloc extends Bloc<BookinfoEvent, BookinfoState> {
   ) async* {
     if (event is BookinfoEventLoadInfo) {
       var data = await _calibreRepository.loadBookInfo(event.id);
-      print('data $data');
       if (data.isNotEmpty) {
-        yield BookinfoLoadedFullInfo(data.single);
+        print('data $data');
+        yield BookinfoStateLoadedFull(model: BookInfoModel.fromMap(data.single));
       } else {
-        yield BookinfoLoadedEmptyInfo();
+        yield BookinfoStateLoadedEmpty();
       }
     }
   }

@@ -1,0 +1,94 @@
+<mxfile host="65bd71144e" modified="2020-10-05T19:28:49.226Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.3 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="sm5u-ZNoYnFq3Lj6LRaf" version="13.6.5" pages="2">
+    <diagram id="MPbRDAqbTrI8IQtA6hCC" name="book-info">
+        <mxGraphModel dx="634" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.phone2;strokeColor=#006EAF;fillColor=#1ba1e2;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="330" height="750" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="standart app bar (layout)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="100" width="310" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&amp;nbsp;Название книги" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#B3B3B3;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="160" width="270" height="26.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.contact_badge_normal;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="200" width="270" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Рейтинг 5 из 5" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="366.56" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="комментарии из goodreads ?" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="660" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="серия: какая-то серия" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="585" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Имя автора (ссылка)" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="390" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="теги: фдыва, фыва,фыав, фыва" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="450" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="описание книги" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="510" width="270" height="66.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.window;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="610" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.window;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="610" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.window;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="610" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.window;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="610" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="форматы: pdf" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="480" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="идентификаторы: isbn" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=left;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="420" width="270" height="16.88" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=2;shape=mxgraph.ios7.misc.more;strokeColor=#a0a0a0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="618" width="10" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.ios7ui.pageControl;fillColor=#222222;strokeColor=#aaaaaa;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="627" width="50" height="5" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.quick_contact;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="690" width="270" height="165" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Name" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;rSize=0;fontStyle=1;fontColor=#FFFFFF;" parent="27" vertex="1">
+                    <mxGeometry y="64.99999999999999" width="270" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Item 1" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;rSize=0;align=left;spacingLeft=10;" parent="27" vertex="1">
+                    <mxGeometry y="107.99999999999999" width="216" height="27.999999999999996" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Item 2" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;rSize=0;align=left;spacingLeft=10;" parent="27" vertex="1">
+                    <mxGeometry y="136" width="216" height="27.999999999999996" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Все данные, за исключением комментариев, берутся из Калибре.&lt;br&gt;При переходе на страницу запрашиваются данные по идентификаторам из goodreads, а именно -&amp;nbsp; комментарии к книге." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="414" y="100" width="336" height="150" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="djXs7NF-YFqSggHcNYGD" name="Page-2">
+        &#xa;
+        <mxGraphModel dx="634" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            &#xa;
+            <root>
+                &#xa;
+                <mxCell id="pBwFHMQsEDLww335BRrM-0"/>
+                &#xa;
+                <mxCell id="pBwFHMQsEDLww335BRrM-1" parent="pBwFHMQsEDLww335BRrM-0"/>
+                &#xa;
+            </root>
+            &#xa;
+        </mxGraphModel>
+        &#xa;
+    </diagram>
+</mxfile>
