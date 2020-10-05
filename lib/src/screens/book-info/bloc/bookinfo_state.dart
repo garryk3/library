@@ -13,6 +13,9 @@ class BookinfoInitial extends BookinfoState {}
 class BookinfoStateLoadedFull extends BookinfoState {
   final BookInfoModel model;
   const BookinfoStateLoadedFull({this.model});
+
+  @override
+  List<Object> get props => [model];
 }
 
 class BookinfoStateLoadedEmpty extends BookinfoState {}

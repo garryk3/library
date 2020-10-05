@@ -1,6 +1,7 @@
 part of '../library.dart';
 
 class BookModel extends Equatable {
+  final String coverFileName = 'cover.jpg';
   final int bookId;
   final int authorId;
   final String title;
@@ -23,5 +24,5 @@ class BookModel extends Equatable {
         rating = bookData['rating'];
 
   @override
-  List<Object> get props => [title, path, hasCover, author, tags, lang, authorId, bookId];
+  List<Object> get props => [title, path, hasCover, author, tags, lang, authorId, bookId, coverFileName];
 }

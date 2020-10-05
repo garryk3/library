@@ -3,7 +3,6 @@ part of '../library.dart';
 final _pathToCalibreFolder = getService<DbProvider>().calibreFolderPath;
 
 class Book extends StatelessWidget {
-  final String _coverFileName = 'cover.jpg';
   final BookModel _model;
   const Book(this._model, {Key key}) : super(key: key);
 
@@ -12,7 +11,7 @@ class Book extends StatelessWidget {
     final coverFile = File(join(
       _pathToCalibreFolder,
       _model.path,
-      _coverFileName,
+      _model.coverFileName,
     ));
     final hasCover = _model.hasCover == 1 && coverFile.existsSync();
 
@@ -21,10 +20,10 @@ class Book extends StatelessWidget {
       child: Stack(
         alignment: AlignmentDirectional.topCenter,
         children: [
-          if(_model.rating != null) 
+          if (_model.rating != null)
             Positioned(
-              child: Text('${(_model.rating ~/2).toString()}/5', style: const TextStyle(color: Colors.white)), 
-              left: 8.0, 
+              child: Text('${(_model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.white)),
+              left: 8.0,
               top: 8.0,
             ),
           if (hasCover)

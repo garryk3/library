@@ -21,7 +21,8 @@ class AppRouter {
 
   static Route<dynamic> _buildGetPathRoute() => MaterialPageRoute(builder: (_) => AppRoute(child: GetPath()));
 
-  static Route<dynamic> _buildBookInfoRoute() => MaterialPageRoute(builder: (_) => AppRoute(child: BookInfo()));
+  static Route<dynamic> _buildBookInfoRoute() =>
+      MaterialPageRoute(builder: (BuildContext context) => AppRoute(child: BookInfo()));
 
   static Route<dynamic> _buildHomeRoute() => MaterialPageRoute(
         builder: (_) => BlocProvider<HomeBloc>(
