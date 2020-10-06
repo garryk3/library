@@ -44,7 +44,13 @@ const String selectCalibreBookInfo = '''
 	author_sort as author, 
 	path, 
 	has_cover as hasCover,
-  $tableCalibreRatings.rating
+  $tableCalibreRatings.rating,
+  $tableCalibreIdentifiers.type as identType,
+  $tableCalibreIdentifiers.val as identVal,
+  $tableCalibreComments.text as description,
+  $tableCalibreData.format,
+  $tableCalibreSeries.name as seriesName,
+  $tableCalibreBooksSeriesLink.series as seriesId
 	FROM $tableCalibreBooks
 		LEFT JOIN $tableCalibreAuthors ON $tableCalibreAuthors.sort = $tableCalibreBooks.author_sort
 		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id 
@@ -53,6 +59,19 @@ const String selectCalibreBookInfo = '''
 		LEFT JOIN tags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
     LEFT JOIN $tableCalibreBooksRatingsLink ON $tableCalibreBooks.id = $tableCalibreBooksRatingsLink.book
 	  LEFT JOIN $tableCalibreRatings ON $tableCalibreBooksRatingsLink.rating = $tableCalibreRatings.id
-		
+		LEFT JOIN $tableCalibreIdentifiers ON $tableCalibreBooks.id = $tableCalibreIdentifiers.book
+		LEFT JOIN $tableCalibreData ON $tableCalibreData.book = $tableCalibreBooks.id
+		LEFT JOIN $tableCalibreComments ON $tableCalibreComments.book = $tableCalibreBooks.id
+		LEFT JOIN $tableCalibreBooksSeriesLink ON $tableCalibreBooksSeriesLink.book = $tableCalibreBooks.id
+		LEFT JOIN $tableCalibreSeries ON $tableCalibreSeries.id = $tableCalibreBooksSeriesLink.series
 	WHERE $tableCalibreBooks.id = ?
+''';
+
+const String selectSeriesBooks = '''
+SELECT id as bookId, title, has_cover as hasCover, path
+	FROM $tableCalibreBooks 
+	WHERE $tableCalibreBooks.id in (
+		SELECT $tableCalibreBooksSeriesLink.book
+			FROM $tableCalibreBooksSeriesLink WHERE series = ? AND $tableCalibreBooksSeriesLink.book != ?
+	)
 ''';

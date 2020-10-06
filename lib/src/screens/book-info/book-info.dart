@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:library/src/screens/library/library.dart';
 import 'package:library/src/services/service-locator.dart';
@@ -14,6 +14,7 @@ import 'bloc/bookinfo_bloc.dart';
 export 'bloc/bookinfo_bloc.dart';
 
 part 'models/book-info-model.dart';
+part 'widgets/slider.dart';
 
 final _pathToCalibreFolder = getService<DbProvider>().calibreFolderPath;
 
@@ -39,6 +40,7 @@ class BookInfo extends StatelessWidget {
             final hasCover = _model.hasCover == 1 && coverFile.existsSync();
             return Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Heading(
                     title: _model.title,
@@ -48,13 +50,7 @@ class BookInfo extends StatelessWidget {
                       coverFile,
                       height: 100.0,
                     ),
-                  if (!hasCover)
-                    Icon(
-                      Icons.book_outlined,
-                      color: Colors.white,
-                      size: 100.0,
-                    ),
-                  Text('Рейтинг: ${(_model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.white)),
+                  Text('Рейтинг: ${(_model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.black)),
                   Text(
                     _model.author,
                     overflow: TextOverflow.ellipsis,
@@ -68,6 +64,35 @@ class BookInfo extends StatelessWidget {
                       maxLines: 1,
                       style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
                     ),
+                  if (_model.format != null)
+                    Text(
+                      _model.format,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
+                    ),
+                  Text(
+                    _model.description,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 5, // refactor
+                    style: const TextStyle(fontSize: 12.0),
+                  ),
+                  if (_model.seriesName != null)
+                    Text(
+                      'Серия: ${_model.seriesName}',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
+                    ),
+                  if (_model.seriesName != null && _model.seriesBooks == null)
+                    Text(
+                      'Другие книги серии в библиотеке не найдены',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
+                    ),
+                  if (_model.seriesBooks != null)
+                    BookInfoSlider(_model.seriesBooks)
                 ],
               ),
             );

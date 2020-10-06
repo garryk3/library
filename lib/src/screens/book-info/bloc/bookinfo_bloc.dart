@@ -24,9 +24,9 @@ class BookinfoBloc extends Bloc<BookinfoEvent, BookinfoState> {
   ) async* {
     if (event is BookinfoEventLoadInfo) {
       var data = await _calibreRepository.loadBookInfo(event.id);
-      if (data.isNotEmpty) {
-        print('data $data');
-        yield BookinfoStateLoadedFull(model: BookInfoModel.fromMap(data.single));
+      if (data != null) {
+        print('data ${data}');
+        yield BookinfoStateLoadedFull(model: BookInfoModel.fromMap(data));
       } else {
         yield BookinfoStateLoadedEmpty();
       }

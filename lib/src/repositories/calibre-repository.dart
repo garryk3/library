@@ -2,6 +2,7 @@ import 'package:library/src/services/service-locator.dart';
 import 'package:library/src/components/error/index.dart';
 import 'package:library/src/components/loader/bloc/loader_bloc.dart';
 import 'package:library/src/services/providers/providers.dart';
+import 'package:library/src/screens/book-info/book-info.dart';
 
 class CalibreRepository {
   static final _instance = CalibreRepository._private();
@@ -50,7 +51,23 @@ class CalibreRepository {
     return _handleCommand<List<Map<String, dynamic>>>(_dbProvider.commands.loadBooks, null);
   }
 
-  Future<List<Map<String, dynamic>>> loadBookInfo(int id) async {
-    return _handleCommand<List<Map<String, dynamic>>>(_dbProvider.commands.loadBookInfo, [id]);
+  Future<Map<String, dynamic>> _loadBookInfoById(int id) async {
+    var info = await _dbProvider.commands.loadBookInfo(id);
+    if (info.isEmpty) {
+      return null;
+    }
+    var book = Map<String, dynamic>.from(info.single);
+    var seriesId = book['seriesId'];
+    if (seriesId != null) {
+      var seriesBooks = await _dbProvider.commands.loadSeriesBooks(seriesId, id);
+      if (seriesBooks.isNotEmpty) {
+        book['seriesBooks'] = seriesBooks.map((data) => BookInfoModel.fromMap(data)).toList();
+      }
+    }
+    return book;
+  }
+
+  Future<Map<String, dynamic>> loadBookInfo(int id) async {
+    return _handleCommand<Map<String, dynamic>>(_loadBookInfoById, [id]);
   }
 }
