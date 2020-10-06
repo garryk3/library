@@ -13,6 +13,7 @@ List<_MenuItem> _menuData = const [
   _MenuItem('Оценки', Routes.ratings),
   _MenuItem('Серии', Routes.home),
   _MenuItem('Теги', Routes.home),
+  _MenuItem('Жанры', Routes.home),
 ];
 
 class Menu extends StatelessWidget {
