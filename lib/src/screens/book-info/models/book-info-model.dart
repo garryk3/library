@@ -7,6 +7,7 @@ class BookInfoModel extends BookModel {
   final String format;
   final String seriesName;
   final int seriesId;
+  final String langCode;
   final List<BookInfoModel> seriesBooks;
 
   BookInfoModel.fromMap(Map<String, dynamic> bookData)
@@ -17,6 +18,7 @@ class BookInfoModel extends BookModel {
         seriesName = bookData['seriesName'],
         seriesId = bookData['seriesId'],
         seriesBooks = bookData['seriesBooks'],
+        langCode = bookData['langCode'],
         super.fromMap(bookData);
 
   @override

@@ -11,6 +11,7 @@ List<_MenuItem> _menuData = const [
   _MenuItem('Библиотека', Routes.library),
   _MenuItem('Авторы', Routes.home),
   _MenuItem('Оценки', Routes.ratings),
+  _MenuItem('Избранное', Routes.ratings),
   _MenuItem('Серии', Routes.home),
   _MenuItem('Теги', Routes.home),
   _MenuItem('Жанры', Routes.home),

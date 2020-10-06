@@ -15,6 +15,8 @@ export 'bloc/bookinfo_bloc.dart';
 
 part 'models/book-info-model.dart';
 part 'widgets/slider.dart';
+part 'widgets/top-part.dart';
+part 'widgets/action-buttons.dart';
 
 final _pathToCalibreFolder = getService<DbProvider>().calibreFolderPath;
 
@@ -32,25 +34,25 @@ class BookInfo extends StatelessWidget {
           }
           if (state is BookinfoStateLoadedFull) {
             final _model = state.model;
-            final coverFile = File(join(
-              _pathToCalibreFolder,
-              _model.path,
-              _model.coverFileName,
-            ));
-            final hasCover = _model.hasCover == 1 && coverFile.existsSync();
-            return Container(
+            final screenWidth = MediaQuery.of(context).size.width;
+
+            return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Heading(
                     title: _model.title,
                   ),
-                  if (hasCover)
-                    Image.file(
-                      coverFile,
-                      height: 100.0,
+                  BookinfoTopPart(_model),
+                  Container(
+                    width: screenWidth / 2 - 30.0,
+                    child: OutlineButton(
+                      child: Text('Читать'),
+                      onPressed: () {
+                        print('press read');
+                      },
                     ),
-                  Text('Рейтинг: ${(_model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.black)),
+                  ),
                   Text(
                     _model.author,
                     overflow: TextOverflow.ellipsis,
@@ -60,13 +62,6 @@ class BookInfo extends StatelessWidget {
                   if (_model.tags != null)
                     Text(
                       _model.tags,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
-                    ),
-                  if (_model.format != null)
-                    Text(
-                      _model.format,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
@@ -91,13 +86,12 @@ class BookInfo extends StatelessWidget {
                       maxLines: 1,
                       style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
                     ),
-                  if (_model.seriesBooks != null)
-                    BookInfoSlider(_model.seriesBooks)
+                  if (_model.seriesBooks != null) BookInfoSlider(_model.seriesBooks)
                 ],
               ),
             );
           }
-          return null;
+          return Text('loading...');
         },
       ),
     );

@@ -20,7 +20,7 @@ const String selectCalibreBooks = '''
 		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id 
 		LEFT JOIN $tableCalibreLang ON $tableCalibreLang.id = $tableCalibreBooksLangLinks.lang_code
 		LEFT JOIN $tableCalibreBooksTagsLink ON $tableCalibreBooksTagsLink.book = $tableCalibreBooks.id
-		LEFT JOIN tags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
+		LEFT JOIN $tableCalibreTags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
     LEFT JOIN $tableCalibreBooksRatingsLink ON $tableCalibreBooks.id = $tableCalibreBooksRatingsLink.book
 	  LEFT JOIN $tableCalibreRatings ON $tableCalibreBooksRatingsLink.rating = $tableCalibreRatings.id
 		
@@ -37,7 +37,7 @@ SELECT title, ratings.rating from $tableCalibreBooks
 const String selectCalibreBookInfo = '''
   SELECT 
 	group_concat($tableCalibreTags.name) as tags, 
-	$tableCalibreLang.lang_code as lang, 
+  $tableCalibreLang.lang_code as langCode, 
 	$tableCalibreAuthors.id as authorId, 
 	title, 
 	$tableCalibreBooks.id as bookId, 
@@ -56,7 +56,7 @@ const String selectCalibreBookInfo = '''
 		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id 
 		LEFT JOIN $tableCalibreLang ON $tableCalibreLang.id = $tableCalibreBooksLangLinks.lang_code
 		LEFT JOIN $tableCalibreBooksTagsLink ON $tableCalibreBooksTagsLink.book = $tableCalibreBooks.id
-		LEFT JOIN tags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
+		LEFT JOIN $tableCalibreTags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
     LEFT JOIN $tableCalibreBooksRatingsLink ON $tableCalibreBooks.id = $tableCalibreBooksRatingsLink.book
 	  LEFT JOIN $tableCalibreRatings ON $tableCalibreBooksRatingsLink.rating = $tableCalibreRatings.id
 		LEFT JOIN $tableCalibreIdentifiers ON $tableCalibreBooks.id = $tableCalibreIdentifiers.book

@@ -33,9 +33,6 @@ class Library extends StatelessWidget {
           ),
           Expanded(child: BlocBuilder<LibraryBloc, LibraryState>(
             builder: (context, state) {
-              if (state is LibraryInitial) {
-                return Text('Loading...');
-              }
               if (state is LibraryStateDataLoaded) {
                 final bloc = BlocProvider.of<LibraryBloc>(context);
 
@@ -58,7 +55,7 @@ class Library extends StatelessWidget {
                       );
                     });
               }
-              return null;
+              return Text('loading...');
             },
           ))
         ],
