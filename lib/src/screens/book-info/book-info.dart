@@ -10,7 +10,6 @@ import 'package:library/src/services/service-locator.dart';
 import 'package:library/src/ui/heading/heading.dart';
 
 import 'bloc/bookinfo_bloc.dart';
-import 'bloc/bookinfo_bloc.dart';
 
 export 'bloc/bookinfo_bloc.dart';
 
