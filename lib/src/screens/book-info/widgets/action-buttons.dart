@@ -24,12 +24,6 @@ class _BookinfoActionButtonsState extends State<BookinfoActionButtons> {
         children: [
           buildRow(text: 'В избранное', action: _onTapFavorites),
           buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
-          buildRow(text: 'Прочитано', action: _onTapRead),
         ],
       ),
     );

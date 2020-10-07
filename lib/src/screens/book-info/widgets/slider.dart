@@ -11,8 +11,8 @@ class BookInfoSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
+    return Container(
+        margin: EdgeInsets.only(top: 16.0),
         width: double.infinity,
         child: CarouselSlider(
           options: CarouselOptions(),
@@ -38,7 +38,6 @@ class BookInfoSlider extends StatelessWidget {
             );
           }).toList(),
         ),
-      ),
-    );
+      );
   }
 }

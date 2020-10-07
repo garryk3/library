@@ -5,6 +5,15 @@ class BookinfoTopPart extends StatelessWidget {
 
   const BookinfoTopPart(this.model, {Key key}) : super(key: key);
 
+  Widget buildTextLine(String text) {
+    return Text(
+      text,
+      overflow: TextOverflow.ellipsis,
+      maxLines: 1,
+      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final coverFile = File(join(
@@ -14,7 +23,6 @@ class BookinfoTopPart extends StatelessWidget {
     ));
     final hasCover = model.hasCover == 1 && coverFile.existsSync();
     final screenWidth = MediaQuery.of(context).size.width;
-    final textStyle = const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0);
 
     return Container(
       margin: EdgeInsets.only(bottom: 8.0),
@@ -32,36 +40,19 @@ class BookinfoTopPart extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Рейтинг: ${(model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.black)),
-                if (model.format != null)
-                  Text(
-                    'Формат: ${model.format}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: textStyle,
-                  ),
-                if (model.identType != null)
-                  Text(
-                    'Идентификаторы: ${model.identType}',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: textStyle,
-                  ),
-                if (model.langCode != null)
-                  Text(
-                    model.langCode,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: textStyle,
-                  ),
-                BookinfoActionButtons(),
-              ],
+              padding: EdgeInsets.only(left: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildTextLine('Рейтинг: ${(model.rating ~/ 2).toString()}/5'),
+                  if (model.format != null) buildTextLine('Формат: ${model.format}'),
+                  if (model.identType != null) buildTextLine('Идентификаторы: ${model.identType}'),
+                  if (model.langCode != null) buildTextLine(model.langCode),
+                  BookinfoActionButtons(),
+                ],
+              ),
             ),
-          ))
+          )
         ],
       ),
     );

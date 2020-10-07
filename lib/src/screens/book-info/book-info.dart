@@ -33,67 +33,55 @@ class BookInfo extends StatelessWidget {
             return Text('Ошибка, отсутствует информация о книге!');
           }
           if (state is BookinfoStateLoadedFull) {
-            final _model = state.model;
-            final screenWidth = MediaQuery.of(context).size.width;
-
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Heading(
-                    title: _model.title,
+            return Column(
+              children: [
+                Heading(title: state.model.title),
+                Expanded(
+                  child: ListView(
+                    children: buildContentList(context, state.model),
                   ),
-                  BookinfoTopPart(_model),
-                  Container(
-                    width: screenWidth / 2 - 30.0,
-                    child: OutlineButton(
-                      child: Text('Читать'),
-                      onPressed: () {
-                        print('press read');
-                      },
-                    ),
-                  ),
-                  Text(
-                    _model.author,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: const TextStyle(fontSize: 13.0),
-                  ),
-                  if (_model.tags != null)
-                    Text(
-                      _model.tags,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
-                    ),
-                  Text(
-                    _model.description,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 5, // refactor
-                    style: const TextStyle(fontSize: 12.0),
-                  ),
-                  if (_model.seriesName != null)
-                    Text(
-                      'Серия: ${_model.seriesName}',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
-                    ),
-                  if (_model.seriesName != null && _model.seriesBooks == null)
-                    Text(
-                      'Другие книги серии в библиотеке не найдены',
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),
-                    ),
-                  if (_model.seriesBooks != null) BookInfoSlider(_model.seriesBooks)
-                ],
-              ),
+                )
+              ],
             );
           }
-          return Text('loading...');
+          return Placeholder(
+            fallbackHeight: 100,
+            fallbackWidth: 100,
+          );
         },
       ),
     );
+  }
+
+  Widget buildTextLine(String text, {int maxLines = 1}) {
+    return Text(
+      text,
+      overflow: TextOverflow.ellipsis,
+      maxLines: maxLines,
+      style: const TextStyle(fontSize: 12.0),
+    );
+  }
+
+  List<Widget> buildContentList(BuildContext context, BookInfoModel _model) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return [
+      BookinfoTopPart(_model),
+      Container(
+        width: screenWidth / 2 - 30.0,
+        child: OutlineButton(
+          child: Text('Читать'),
+          onPressed: () {
+            print('press read');
+          },
+        ),
+      ),
+      buildTextLine(_model.author),
+      if (_model.tags != null) buildTextLine(_model.tags),
+      buildTextLine(_model.description, maxLines: 5),
+      if (_model.seriesName != null) buildTextLine('Серия: ${_model.seriesName}'),
+      if (_model.seriesName != null && _model.seriesBooks == null) buildTextLine('Другие книги серии в библиотеке не найдены'),
+      if (_model.seriesBooks != null) BookInfoSlider(_model.seriesBooks)
+    ];
   }
 }
