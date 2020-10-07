@@ -8,6 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:library/src/screens/library/library.dart';
 import 'package:library/src/services/service-locator.dart';
 import 'package:library/src/ui/heading/heading.dart';
+import 'package:library/src/repositories/repositories.dart';
 
 import 'bloc/bookinfo_bloc.dart';
 
@@ -80,7 +81,8 @@ class BookInfo extends StatelessWidget {
       if (_model.tags != null) buildTextLine(_model.tags),
       buildTextLine(_model.description, maxLines: 5),
       if (_model.seriesName != null) buildTextLine('Серия: ${_model.seriesName}'),
-      if (_model.seriesName != null && _model.seriesBooks == null) buildTextLine('Другие книги серии в библиотеке не найдены'),
+      if (_model.seriesName != null && _model.seriesBooks == null)
+        buildTextLine('Другие книги серии в библиотеке не найдены'),
       if (_model.seriesBooks != null) BookInfoSlider(_model.seriesBooks)
     ];
   }

@@ -5,22 +5,31 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 
-import 'package:library/src/repositories/repositories.dart';
+import 'package:library/src/services/service-locator.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  final CalibreRepository _calibreRepository;
+  final DbProvider _dbProvider = getService<DbProvider>();
 
-  AppBloc(this._calibreRepository) : super(AppInitial());
+  AppBloc() : super(AppInitial());
+
+  Map<String, dynamic> _getCalibreValues() {}
+
+  Future<Map<String, dynamic>> _initializeApp() async {
+    await _dbProvider.initialize();
+    var isCalibreExist = _dbProvider.isCalibreExist;
+    var path = _dbProvider.calibreFolderPath;
+    return {'path': path, 'isCalibreExist': isCalibreExist};
+  }
 
   @override
   Stream<AppState> mapEventToState(
     AppEvent event,
   ) async* {
     if (event is AppEventInitialize) {
-      var initialData = await _calibreRepository.initializeApp();
+      var initialData = await _initializeApp();
       if (initialData['path'] != null) {
         yield AppStateWithPath(initialData['path'], initialData['isCalibreExist']);
       }

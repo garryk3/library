@@ -39,7 +39,7 @@ class BookinfoTopPart extends StatelessWidget {
                 : Icon(Icons.book_outlined, color: Colors.black, size: 100.0),
           ),
           Expanded(
-              child: Container(
+            child: Container(
               padding: EdgeInsets.only(left: 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class BookinfoTopPart extends StatelessWidget {
                   if (model.format != null) buildTextLine('Формат: ${model.format}'),
                   if (model.identType != null) buildTextLine('Идентификаторы: ${model.identType}'),
                   if (model.langCode != null) buildTextLine(model.langCode),
-                  BookinfoActionButtons(),
+                  BookinfoActionButtons(context, model.bookId),
                 ],
               ),
             ),

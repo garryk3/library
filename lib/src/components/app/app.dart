@@ -12,6 +12,7 @@ import 'package:library/src/screens/ratings/ratings.dart';
 import 'package:library/src/repositories/repositories.dart';
 import 'package:library/src/services/service-locator.dart';
 
+import '../../repositories/repositories.dart';
 import 'bloc/app_bloc.dart';
 export 'bloc/app_bloc.dart';
 
@@ -32,39 +33,44 @@ class LibraryApp extends StatefulWidget {
 class _AppState extends State<LibraryApp> {
   ErrorBloc _errorBloc;
   LoaderBloc _loaderBloc;
-  CalibreRepository _calibreRepository;
   AppBloc _appBloc;
   BookinfoBloc _bookInfoBloc;
+
+  CalibreRepository _calibreRepository;
+  AppDbRepository _appDbRepository;
 
   @override
   void initState() {
     _errorBloc = ErrorBloc();
     _loaderBloc = LoaderBloc();
     _calibreRepository = CalibreRepository(_errorBloc, _loaderBloc);
-    _appBloc = AppBloc(_calibreRepository)..add(AppEventInitialize());
+    _appBloc = AppBloc()..add(AppEventInitialize());
     _bookInfoBloc = BookinfoBloc(_calibreRepository);
+    _appDbRepository = AppDbRepository();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<ErrorBloc>.value(value: _errorBloc),
-        BlocProvider<LoaderBloc>.value(value: _loaderBloc),
-        BlocProvider<AppBloc>.value(value: _appBloc),
-        BlocProvider.value(value: _bookInfoBloc)
-      ],
-      child: RepositoryProvider.value(
-        value: _calibreRepository,
-        child: MaterialApp(
-          title: 'Calendar',
-          theme: getTheme(),
-          initialRoute: Routes.home.toString(),
-          onGenerateRoute: AppRouter.generateRoute,
-        ),
-      ),
-    );
+        providers: [
+          BlocProvider<ErrorBloc>.value(value: _errorBloc),
+          BlocProvider<LoaderBloc>.value(value: _loaderBloc),
+          BlocProvider<AppBloc>.value(value: _appBloc),
+          BlocProvider.value(value: _bookInfoBloc)
+        ],
+        child: MultiRepositoryProvider(
+          providers: [
+            RepositoryProvider.value(value: _calibreRepository),
+            RepositoryProvider.value(value: _appDbRepository),
+          ],
+          child: MaterialApp(
+            title: 'Calendar',
+            theme: getTheme(),
+            initialRoute: Routes.home.toString(),
+            onGenerateRoute: AppRouter.generateRoute,
+          ),
+        ));
   }
 
   @override

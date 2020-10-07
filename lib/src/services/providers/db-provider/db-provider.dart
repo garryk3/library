@@ -48,10 +48,10 @@ class DbProvider implements IProvider {
 
   Future<void> initialize() async {
     await _open();
-    _pathToCalibreFolder = await readCalibrePath();
     if (_db != null) {
       try {
         await commands.createMainTables();
+        _pathToCalibreFolder = await readCalibrePath();
         if (_pathToCalibreFolder != null) {
           _isCalibreDbExist = await isCalibreExistByCurrentPath();
           if (!_isCalibreDbExist) {

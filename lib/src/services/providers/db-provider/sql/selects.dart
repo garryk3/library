@@ -1,7 +1,7 @@
 part of 'sql.dart';
 
 const String selectDbPath = '''
-  SELECT name, path FROM $tableAppSettings WHERE name='$calibreColumnName'
+  SELECT value FROM $tableAppSettings WHERE key='$calibreColumnName'
 ''';
 
 const String selectCalibreBooks = '''

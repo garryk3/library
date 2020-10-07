@@ -6,10 +6,11 @@ part 'deletes.dart';
 /// attached db calibre
 const String calibreDbName = 'CalibreDb';
 
-/// table AppInfo
+/// tables of app db
 const String tableAppSettings = 'AppSettings';
+const String tableAppBooks = 'BooksInfo';
 
-/// table Calibre 
+/// tables of db Calibre
 const String tableCalibreBooks = '$calibreDbName.books';
 const String tableCalibreAuthors = '$calibreDbName.authors';
 const String tableCalibreBooksLangLinks = '$calibreDbName.books_languages_link';

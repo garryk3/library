@@ -36,17 +36,6 @@ class CalibreRepository {
     return data;
   }
 
-  Map<String, dynamic> getCalibreValues() {
-    var isCalibreExist = _dbProvider.isCalibreExist;
-    var path = _dbProvider.calibreFolderPath;
-    return {'path': path, 'isCalibreExist': isCalibreExist};
-  }
-
-  Future<Map<String, dynamic>> initializeApp() async {
-    await _dbProvider.initialize();
-    return getCalibreValues();
-  }
-
   Future<List<Map<String, dynamic>>> loadBooks({dynamic filters}) async {
     return _handleCommand<List<Map<String, dynamic>>>(_dbProvider.commands.loadBooks, null);
   }
