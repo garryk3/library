@@ -9,7 +9,7 @@ class DbProvider implements IProvider {
 
   factory DbProvider(logger) {
     _instance._logger = logger;
-    _instance.commands = DbCommands(_instance);
+    _instance.commands = DbCommands(_instance, logger);
     return _instance;
   }
 

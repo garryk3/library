@@ -2,8 +2,9 @@ part of '../providers.dart';
 
 class DbCommands {
   final DbProvider _db;
+  final Logger _logger;
 
-  const DbCommands(this._db);
+  const DbCommands(this._db, this._logger);
 
   Future<void> createMainTables() async {
     await _db.execute(createTableSettings);
@@ -22,8 +23,15 @@ class DbCommands {
   Future<void> deleteCalibreDbPath() => _db.rawDelete(deleteCalibrePath);
 
   Future<String> readCalibrePath() async {
-    var dbCalibreSettings = await _db.rawQuery(selectDbPath);
-    String path = dbCalibreSettings?.single['path'];
+    String path;
+    try {
+      var dbCalibreSettings = await _db.rawQuery(selectDbPath);
+      if (dbCalibreSettings.isNotEmpty) {
+        path = dbCalibreSettings.single['value'];
+      }
+    } catch (error) {
+      _logger.e(error);
+    }
 
     return path;
   }
