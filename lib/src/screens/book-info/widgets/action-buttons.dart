@@ -17,8 +17,6 @@ class _BookinfoActionButtonsState extends State<BookinfoActionButtons> {
 
   @override
   void initState() {
-    print('0000000000000000 ${widget.model.bookId} ${widget.model.favorites} ${widget.model.read}');
-    print('widget ${widget.model}');
     super.initState();
     isReaded = widget.model.read;
     isFavorites = widget.model.favorites;

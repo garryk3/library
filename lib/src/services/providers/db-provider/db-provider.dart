@@ -78,9 +78,6 @@ class DbProvider implements IProvider {
   Future<String> readCalibrePath() => commands.readCalibrePath();
 
   Future<void> writePathToCalibreFolder(String path) async {
-    if (path == _pathToCalibreFolder) {
-      return;
-    }
     _pathToCalibreFolder = path;
     _isCalibreDbExist = await isCalibreExistByCurrentPath();
     var lastSavedPath = await commands.readCalibrePath();

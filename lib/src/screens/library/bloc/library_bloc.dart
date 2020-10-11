@@ -25,6 +25,7 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
         super(LibraryInitial());
 
   void goToBookInfo(BuildContext context, int id) {
+    print('adddddd------- $id');
     _bookinfoBloc.add(BookinfoEventLoadInfo(id));
     AppRouter.goTo(context, Routes.bookInfo);
   }

@@ -45,10 +45,7 @@ class BookInfo extends StatelessWidget {
               ],
             );
           }
-          return Placeholder(
-            fallbackHeight: 100,
-            fallbackWidth: 100,
-          );
+          return Text('loading...');
         },
       ),
     );

@@ -51,7 +51,7 @@ class BookInfoModel extends BookModel {
       ];
 
   @override
-  toString() {
+  String toString() {
     return '${super.toString()} : bookId - $bookId, title - $title, read - $read, favorites = $favorites';
   }
 }

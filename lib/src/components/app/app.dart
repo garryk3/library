@@ -46,31 +46,32 @@ class _AppState extends State<LibraryApp> {
     _calibreRepository = CalibreRepository(_errorBloc, _loaderBloc);
     _appDbRepository = AppDbRepository();
     _appBloc = AppBloc(_appDbRepository)..add(AppEventInitialize());
-    _bookInfoBloc = BookinfoBloc(_calibreRepository, _appDbRepository);
+    _bookInfoBloc = BookinfoBloc(_calibreRepository, _appDbRepository, _loaderBloc);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
+      providers: [
+        BlocProvider<ErrorBloc>.value(value: _errorBloc),
+        BlocProvider<LoaderBloc>.value(value: _loaderBloc),
+        BlocProvider<AppBloc>.value(value: _appBloc),
+        BlocProvider.value(value: _bookInfoBloc)
+      ],
+      child: MultiRepositoryProvider(
         providers: [
-          BlocProvider<ErrorBloc>.value(value: _errorBloc),
-          BlocProvider<LoaderBloc>.value(value: _loaderBloc),
-          BlocProvider<AppBloc>.value(value: _appBloc),
-          BlocProvider.value(value: _bookInfoBloc)
+          RepositoryProvider.value(value: _calibreRepository),
+          RepositoryProvider.value(value: _appDbRepository),
         ],
-        child: MultiRepositoryProvider(
-          providers: [
-            RepositoryProvider.value(value: _calibreRepository),
-            RepositoryProvider.value(value: _appDbRepository),
-          ],
-          child: MaterialApp(
+        child: MaterialApp(
             title: 'Calendar',
             theme: getTheme(),
             initialRoute: Routes.home.toString(),
             onGenerateRoute: AppRouter.generateRoute,
           ),
-        ));
+      ),
+    );
   }
 
   @override
@@ -78,6 +79,7 @@ class _AppState extends State<LibraryApp> {
     _errorBloc.close();
     _loaderBloc.close();
     _appBloc.close();
+    _bookInfoBloc.close();
     getService<DbProvider>().dispose();
     super.dispose();
   }
