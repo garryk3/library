@@ -42,4 +42,22 @@ class DbCommands {
 
   Future<List<Map<String, dynamic>>> loadSeriesBooks(int seriesId, int excludedBookId) =>
       _db.rawQuery(selectSeriesBooks, [seriesId, excludedBookId]);
+
+  Future<void> saveFavoriteBook(int id, bool value) async {
+    var val = value ? 1 : 0;
+    await _db.execute(insertFavoriteBook, [id, val]);
+  }
+
+  Future<void> saveReadBook(int id, bool value) async {
+    var val = value ? 1 : 0;
+    await _db.execute(insertReadBook, [id, val]);
+  }
+
+  Future<Map<String, dynamic>> loadBookSavedInfo(int id) async {
+    var data = await _db.rawQuery(selectBookSavedInfo, [id]);
+    if (data.isNotEmpty) {
+      return data.single;
+    }
+    return null;
+  }
 }

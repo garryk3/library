@@ -44,9 +44,9 @@ class _AppState extends State<LibraryApp> {
     _errorBloc = ErrorBloc();
     _loaderBloc = LoaderBloc();
     _calibreRepository = CalibreRepository(_errorBloc, _loaderBloc);
-    _appBloc = AppBloc()..add(AppEventInitialize());
-    _bookInfoBloc = BookinfoBloc(_calibreRepository);
     _appDbRepository = AppDbRepository();
+    _appBloc = AppBloc(_appDbRepository)..add(AppEventInitialize());
+    _bookInfoBloc = BookinfoBloc(_calibreRepository, _appDbRepository);
     super.initState();
   }
 

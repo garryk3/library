@@ -2,8 +2,8 @@ part of '../book-info.dart';
 
 class BookinfoActionButtons extends StatefulWidget {
   final AppDbRepository appDbRepository;
-  final int bookId;
-  BookinfoActionButtons(BuildContext context, this.bookId, {Key key})
+  final BookInfoModel model;
+  BookinfoActionButtons(BuildContext context, this.model, {Key key})
       : appDbRepository = RepositoryProvider.of<AppDbRepository>(context),
         super(key: key);
 
@@ -17,20 +17,25 @@ class _BookinfoActionButtonsState extends State<BookinfoActionButtons> {
 
   @override
   void initState() {
-    widget.appDbRepository?.loadBookSavedInfoById(widget.bookId);
+    print('0000000000000000 ${widget.model.bookId} ${widget.model.favorites} ${widget.model.read}');
+    print('widget ${widget.model}');
     super.initState();
+    isReaded = widget.model.read;
+    isFavorites = widget.model.favorites;
   }
 
   void _onTapFavorites(bool newValue) {
     setState(() {
       isFavorites = newValue;
     });
+    widget.appDbRepository.saveFavoritesBook(widget.model.bookId, newValue);
   }
 
   void _onTapRead(bool newValue) {
     setState(() {
       isReaded = newValue;
     });
+    widget.appDbRepository.saveReadBook(widget.model.bookId, newValue);
   }
 
   @override

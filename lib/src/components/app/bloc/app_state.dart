@@ -23,7 +23,11 @@ class AppInitial extends AppState {
 }
 
 class AppStateWithPath extends AppState {
-  const AppStateWithPath(pathToCalibre, isCalibreExist) : super(pathToCalibre: pathToCalibre, isCalibreExist: isCalibreExist);
+  const AppStateWithPath(pathToCalibre, isCalibreExist)
+      : super(pathToCalibre: pathToCalibre, isCalibreExist: isCalibreExist);
+
+  AppStateWithPath.fromMap(Map<String, dynamic> data)
+      : super(pathToCalibre: data['path'], isCalibreExist: data['isCalibreExist'],);
 
   @override
   List<Object> get props => [pathToCalibre, isCalibreExist];

@@ -75,3 +75,9 @@ SELECT id as bookId, title, has_cover as hasCover, path
 			FROM $tableCalibreBooksSeriesLink WHERE series = ? AND $tableCalibreBooksSeriesLink.book != ?
 	)
 ''';
+
+const selectBookSavedInfo = '''
+  SELECT read, favorites 
+    FROM $tableAppBooks
+    WHERE id = ?
+''';
