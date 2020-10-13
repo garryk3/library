@@ -22,7 +22,7 @@ class AppRouter {
   static Route<dynamic> _buildGetPathRoute() => MaterialPageRoute(builder: (_) => AppRoute(child: GetPath()));
 
   static Route<dynamic> _buildBookInfoRoute() =>
-      MaterialPageRoute(builder: (BuildContext context) => AppRoute(child: BookInfo()));
+      MaterialPageRoute(builder: (BuildContext context) => AppRoute(child: BookInfo(), key: UniqueKey(),));
 
   static Route<dynamic> _buildHomeRoute() => MaterialPageRoute(
         builder: (_) => BlocProvider<HomeBloc>(
@@ -61,9 +61,7 @@ class AppRouter {
       return _buildBookInfoRoute();
     }
     return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        body: Center(child: Text('404 - PAGE NOT FOUND')),
-      ),
+      builder: (_) => AppRoute(child: Text('404 - PAGE NOT FOUND')),
     );
   }
 }

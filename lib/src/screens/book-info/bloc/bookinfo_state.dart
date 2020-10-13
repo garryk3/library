@@ -10,6 +10,8 @@ abstract class BookinfoState extends Equatable {
 
 class BookinfoInitial extends BookinfoState {}
 
+class BookinfoStateLoading extends BookinfoState {}
+
 class BookinfoStateLoadedFull extends BookinfoState {
   final BookInfoModel model;
   const BookinfoStateLoadedFull({this.model});
