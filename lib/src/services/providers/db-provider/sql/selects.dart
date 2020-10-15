@@ -81,3 +81,7 @@ const selectBookSavedInfo = '''
     FROM $tableAppBooks
     WHERE id = ?
 ''';
+
+const selectAuthors = '''
+  SELECT * FROM $tableCalibreAuthors
+''';

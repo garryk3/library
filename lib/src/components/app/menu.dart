@@ -9,7 +9,7 @@ class _MenuItem {
 List<_MenuItem> _menuData = const [
   _MenuItem('Последние книги', Routes.home),
   _MenuItem('Библиотека', Routes.library),
-  _MenuItem('Авторы', Routes.home),
+  _MenuItem('Авторы', Routes.authors),
   _MenuItem('Оценки', Routes.ratings),
   _MenuItem('Избранное', Routes.ratings),
   _MenuItem('Серии', Routes.home),

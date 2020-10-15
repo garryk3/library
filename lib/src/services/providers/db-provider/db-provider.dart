@@ -66,11 +66,9 @@ class DbProvider implements IProvider {
     }
   }
 
-  Future<void> reattachCalibre(bool hasConnected) async {
-    if (hasConnected) {
-      await commands.dettachCalibreDb();
-    }
+  Future<void> reattachCalibre() async {
     if (await isCalibreExistByCurrentPath()) {
+      // await commands.dettachCalibreDb();
       await commands.attachCalibreDb();
     }
   }

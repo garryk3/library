@@ -40,6 +40,8 @@ class DbCommands {
 
   Future<List<Map<String, dynamic>>> loadBookInfo(int id) => _db.rawQuery(selectCalibreBookInfo, [id]);
 
+  Future<List<Map<String, dynamic>>> loadAuthors() => _db.rawQuery(selectAuthors, []);
+
   Future<List<Map<String, dynamic>>> loadSeriesBooks(int seriesId, int excludedBookId) =>
       _db.rawQuery(selectSeriesBooks, [seriesId, excludedBookId]);
 

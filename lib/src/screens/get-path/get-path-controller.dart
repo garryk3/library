@@ -27,8 +27,7 @@ class GetPathController {
   }
 
   Future<void> _savePath(String path, BuildContext context) async {
-    var hasConnected = BlocProvider.of<AppBloc>(context).state.isCalibreExist;
     await _dbProvider.writePathToCalibreFolder(path);
-    await _dbProvider.reattachCalibre(hasConnected);
+    await _dbProvider.reattachCalibre();
   }
 }

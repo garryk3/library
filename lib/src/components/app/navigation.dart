@@ -1,6 +1,6 @@
 part of 'app.dart';
 
-enum Routes { home, ratings, getPath, library, bookInfo }
+enum Routes { home, ratings, getPath, library, bookInfo, authors }
 
 class AppRouter {
   static final _instance = AppRouter._();
@@ -21,8 +21,11 @@ class AppRouter {
 
   static Route<dynamic> _buildGetPathRoute() => MaterialPageRoute(builder: (_) => AppRoute(child: GetPath()));
 
-  static Route<dynamic> _buildBookInfoRoute() =>
-      MaterialPageRoute(builder: (BuildContext context) => AppRoute(child: BookInfo(), key: UniqueKey(),));
+  static Route<dynamic> _buildBookInfoRoute() => MaterialPageRoute(
+      builder: (BuildContext context) => AppRoute(
+            child: BookInfo(),
+            key: UniqueKey(),
+          ));
 
   static Route<dynamic> _buildHomeRoute() => MaterialPageRoute(
         builder: (_) => BlocProvider<HomeBloc>(
@@ -44,6 +47,12 @@ class AppRouter {
             child: AppRoute(child: Ratings()),
           ));
 
+  static Route<dynamic> _buildAuthorsRoute() => MaterialPageRoute(
+      builder: (_) => BlocProvider<AuthorsBloc>(
+            create: (BuildContext context) => AuthorsBloc()..add(AuthorsEventStarted()),
+            child: AppRoute(child: Authors()),
+          ));
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     if (settings.name == Routes.getPath.toString()) {
       return _buildGetPathRoute();
@@ -59,6 +68,9 @@ class AppRouter {
     }
     if (settings.name == Routes.bookInfo.toString()) {
       return _buildBookInfoRoute();
+    }
+    if (settings.name == Routes.authors.toString()) {
+      return _buildAuthorsRoute();
     }
     return MaterialPageRoute(
       builder: (_) => AppRoute(child: Text('404 - PAGE NOT FOUND')),
