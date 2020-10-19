@@ -59,4 +59,9 @@ class CalibreRepository {
   Future<Map<String, dynamic>> loadBookInfo(int id) async {
     return _handleCommand<Map<String, dynamic>>(_loadBookInfoById, [id]);
   }
+
+  Future<List<Map<String, dynamic>>> loadAuthors() async {
+    final authors = await _dbProvider.commands.loadAuthors();
+    return authors;
+  }
 }

@@ -49,7 +49,7 @@ class AppRouter {
 
   static Route<dynamic> _buildAuthorsRoute() => MaterialPageRoute(
       builder: (_) => BlocProvider<AuthorsBloc>(
-            create: (BuildContext context) => AuthorsBloc()..add(AuthorsEventStarted()),
+            create: (BuildContext context) => AuthorsBloc(context)..add(AuthorsEventStarted()),
             child: AppRoute(child: Authors()),
           ));
 
