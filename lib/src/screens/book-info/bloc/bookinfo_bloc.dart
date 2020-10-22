@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:library/src/components/app/app.dart';
-import 'package:library/src/components/loader/loader.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:library/src/repositories/repositories.dart';
+import 'package:library/src/components/loader/loader.dart';
 
 import '../book-info.dart';
 
@@ -38,9 +37,7 @@ class BookinfoBloc extends Bloc<BookinfoEvent, BookinfoState> {
         }
 
         yield BookinfoStateLoadedFull(model: BookInfoModel.fromMap(data));
-        WidgetsBinding.instance
-          .addPostFrameCallback((_) => _loaderBloc.add(LoaderEventHide()));
-        
+        WidgetsBinding.instance.addPostFrameCallback((_) => _loaderBloc.add(LoaderEventHide()));
       } else {
         // _loaderBloc.add(LoaderEventHide());
         yield BookinfoStateLoadedEmpty();

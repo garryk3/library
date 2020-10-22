@@ -1,4 +1,4 @@
-part of '../library.dart';
+import 'package:equatable/equatable.dart';
 
 class BookModel extends Equatable {
   final String coverFileName = 'cover.jpg';

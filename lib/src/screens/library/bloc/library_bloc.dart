@@ -9,8 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:library/src/components/app/app.dart';
 import 'package:library/src/repositories/repositories.dart';
 import 'package:library/src/screens/book-info/book-info.dart';
-
-import '../library.dart';
+import 'package:library/src/models/book-model.dart';
 
 part 'library_event.dart';
 part 'library_state.dart';
@@ -25,7 +24,6 @@ class LibraryBloc extends Bloc<LibraryEvent, LibraryState> {
         super(LibraryInitial());
 
   void goToBookInfo(BuildContext context, int id) {
-    print('adddddd------- $id');
     _bookinfoBloc.add(BookinfoEventLoadInfo(id));
     AppRouter.goTo(context, Routes.bookInfo);
   }

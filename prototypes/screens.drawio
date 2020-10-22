@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2020-10-20T21:19:07.167Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.3 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="5LYM-H_5ojq5wvyF3Ler" version="13.6.5" pages="2">
+<mxfile host="65bd71144e" modified="2020-10-20T21:36:51.317Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.50.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="qlIeKmmRTAPdIlKcp-QP" version="13.6.5" pages="2">
     <diagram id="MPbRDAqbTrI8IQtA6hCC" name="book-info">
         <mxGraphModel dx="777" dy="344" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -105,73 +105,73 @@
             <root>
                 <mxCell id="pBwFHMQsEDLww335BRrM-0"/>
                 <mxCell id="pBwFHMQsEDLww335BRrM-1" parent="pBwFHMQsEDLww335BRrM-0"/>
-                <mxCell id="yh3kfvjLyS9h1Gz6e3lE-0" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.phone2;strokeColor=#001DBC;fillColor=#0050ef;fontColor=#ffffff;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="yh3kfvjLyS9h1Gz6e3lE-0" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;dashed=0;strokeWidth=1;shape=mxgraph.android.phone2;strokeColor=#001DBC;fillColor=#0050ef;fontColor=#ffffff;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="40" y="80" width="300" height="600" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-0" value="standart app bar" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-0" value="standart app bar" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="55" y="140" width="270" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-1" value="авторы" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-1" value="авторы" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="70" y="180" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-2" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;fillColor=#444444;strokeColor=none;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-2" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;fillColor=#444444;strokeColor=none;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="70" y="220" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-3" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;align=left;fontColor=#FFFFFF;" vertex="1" parent="WfU1Km8OVcnc-bC6rNQG-2">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-3" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;align=left;fontColor=#FFFFFF;" parent="WfU1Km8OVcnc-bC6rNQG-2" vertex="1">
                     <mxGeometry width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-4" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;fontColor=#FFFFFF;" vertex="1" parent="WfU1Km8OVcnc-bC6rNQG-2">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-4" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;fontColor=#FFFFFF;" parent="WfU1Km8OVcnc-bC6rNQG-2" vertex="1">
                     <mxGeometry x="60" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="WfU1Km8OVcnc-bC6rNQG-5" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;align=right;fontColor=#FFFFFF;" vertex="1" parent="WfU1Km8OVcnc-bC6rNQG-2">
+                <mxCell id="WfU1Km8OVcnc-bC6rNQG-5" value="сорт" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.anchor;align=right;fontColor=#FFFFFF;" parent="WfU1Km8OVcnc-bC6rNQG-2" vertex="1">
                     <mxGeometry x="180" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="zCPliLKCHrW4LV62728Q-0" value="сортировка по авторам:&lt;br&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;1) по имени (дефолт)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;2) по жанру (выбор жанра)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;3) из избранных авторов&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;4) с оценками книг&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="zCPliLKCHrW4LV62728Q-0" value="сортировка по авторам:&lt;br&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;1) по имени (дефолт)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;2) по жанру (выбор жанра)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;3) из избранных авторов&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left&quot;&gt;&lt;span&gt;4) с оценками книг&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="380" y="180" width="320" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="zCPliLKCHrW4LV62728Q-1" value="" style="endArrow=classic;html=1;" edge="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="zCPliLKCHrW4LV62728Q-1" value="" style="endArrow=classic;html=1;" parent="pBwFHMQsEDLww335BRrM-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="310" y="230" as="sourcePoint"/>
                         <mxPoint x="380" y="230" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="zCPliLKCHrW4LV62728Q-2" value="Label" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="zCPliLKCHrW4LV62728Q-1">
+                <mxCell id="zCPliLKCHrW4LV62728Q-2" value="Label" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" parent="zCPliLKCHrW4LV62728Q-1" connectable="0" vertex="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-0" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;strokeColor=#888888;fillColor=#444444;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="qB5szDoarnhJkUeLePOr-0" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;strokeColor=#888888;fillColor=#444444;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="70" y="310" width="240" height="110" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-1" value="&lt;font style=&quot;font-size: 10px&quot;&gt;author1&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-0">
+                <mxCell id="qB5szDoarnhJkUeLePOr-1" value="&lt;font style=&quot;font-size: 10px&quot;&gt;author1&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-0" vertex="1">
                     <mxGeometry width="240" height="27.500000000000004" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-2" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 2&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-0">
+                <mxCell id="qB5szDoarnhJkUeLePOr-2" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 2&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-0" vertex="1">
                     <mxGeometry y="27.500000000000004" width="240" height="27.500000000000004" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-3" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 3&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-0">
+                <mxCell id="qB5szDoarnhJkUeLePOr-3" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 3&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-0" vertex="1">
                     <mxGeometry y="55.00000000000001" width="240" height="27.500000000000004" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-4" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 4&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-0">
+                <mxCell id="qB5szDoarnhJkUeLePOr-4" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 4&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-0" vertex="1">
                     <mxGeometry y="82.5" width="240" height="27.500000000000004" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-5" value="A" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="qB5szDoarnhJkUeLePOr-5" value="A" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="110" y="270" width="168.8" height="26.88" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-7" value="Б" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="qB5szDoarnhJkUeLePOr-7" value="Б" style="whiteSpace=wrap;html=1;shadow=0;dashed=0;fontSize=10;align=center;fillColor=#1A1A1A;strokeColor=#1A1A1A;fontColor=#FFFFFF;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="105.6" y="440" width="168.8" height="26.88" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-8" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;strokeColor=#888888;fillColor=#444444;" vertex="1" parent="pBwFHMQsEDLww335BRrM-1">
+                <mxCell id="qB5szDoarnhJkUeLePOr-8" value="" style="strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;strokeColor=#888888;fillColor=#444444;" parent="pBwFHMQsEDLww335BRrM-1" vertex="1">
                     <mxGeometry x="70" y="480" width="240" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-9" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 1&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-8">
+                <mxCell id="qB5szDoarnhJkUeLePOr-9" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 1&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-8" vertex="1">
                     <mxGeometry width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-10" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 2&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-8">
+                <mxCell id="qB5szDoarnhJkUeLePOr-10" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 2&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-8" vertex="1">
                     <mxGeometry y="30" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-11" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 3&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-8">
+                <mxCell id="qB5szDoarnhJkUeLePOr-11" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 3&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-8" vertex="1">
                     <mxGeometry y="60" width="240" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="qB5szDoarnhJkUeLePOr-12" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 4&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" vertex="1" parent="qB5szDoarnhJkUeLePOr-8">
+                <mxCell id="qB5szDoarnhJkUeLePOr-12" value="&lt;font style=&quot;font-size: 10px&quot;&gt;Menu Item 4&lt;/font&gt;" style="strokeColor=inherit;fillColor=inherit;gradientColor=inherit;strokeWidth=1;html=1;shadow=0;dashed=0;shape=mxgraph.android.rrect;rSize=0;align=left;spacingLeft=10;fontSize=8;fontColor=#ffffff;" parent="qB5szDoarnhJkUeLePOr-8" vertex="1">
                     <mxGeometry y="90" width="240" height="30" as="geometry"/>
                 </mxCell>
             </root>

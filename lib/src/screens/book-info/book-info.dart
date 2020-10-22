@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:library/src/screens/library/library.dart';
 import 'package:library/src/services/service-locator.dart';
 import 'package:library/src/ui/heading/heading.dart';
 import 'package:library/src/repositories/repositories.dart';
+import 'package:library/src/models/book-model.dart';
 
 import 'bloc/bookinfo_bloc.dart';
 

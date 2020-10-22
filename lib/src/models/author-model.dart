@@ -1,4 +1,4 @@
-part of '../authors.dart';
+import 'package:equatable/equatable.dart';
 
 class AuthorModel extends Equatable {
   final int id;
