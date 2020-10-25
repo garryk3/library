@@ -21,20 +21,48 @@ class Authors extends StatelessWidget {
             height: 40.0,
             child: Text('filters'),
           ),
-          BlocBuilder<AuthorsBloc, AuthorsState>(
-            builder: (context, state) {
-              if (state is AuthorsStateLoaded) {
-                return ListView.builder(
-                  itemCount: state.authorsGroupedByLetterList.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('${state.authorsGroupedByLetterList[index]}'),
-                    );
-                  },
-                );
-              }
-              return Text('loading');
-            },
+          Expanded(
+            child: BlocBuilder<AuthorsBloc, AuthorsState>(
+              builder: (context, state) {
+                if (state is AuthorsStateLoaded) {
+                  return ListView.builder(
+                    itemCount: state.authorsGroupedByLetterList.length,
+                    itemBuilder: (context, index) {
+                      var groupedData = state.authorsGroupedByLetterList[index];
+                      var letter = groupedData.key;
+                      var list = groupedData.value;
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              letter.toUpperCase(),
+                              style: const TextStyle(fontSize: 18.0),
+                            ),
+                          ),
+                          for (var author in list)
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 4.0),
+                              child: InkWell(
+                                onTap: () {
+                                  print('tap author ${author.name}');
+                                },
+                                child: Text(
+                                  author.name,
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      );
+                    },
+                  );
+                }
+                return Text('loading');
+              },
+            ),
           )
         ],
       ),

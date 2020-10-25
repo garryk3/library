@@ -15,21 +15,23 @@ class AuthorsStateLoaded extends AuthorsState {
   const AuthorsStateLoaded(this.authorsGroupedByLetterList);
 
   factory AuthorsStateLoaded.groupedFromMap(List<Map<String, dynamic>> data) {
-    var groupedByLetterList = <String, List<AuthorModel>>{};
+    var groupedByLetterMap = <String, List<AuthorModel>>{};
 
     data.forEach((authorData) {
       var firstLetterOfName = (authorData['sort'] as String).substring(0, 1).toLowerCase();
-      if (!groupedByLetterList.containsKey(firstLetterOfName)) {
-        groupedByLetterList[firstLetterOfName] = [];
+      if (!groupedByLetterMap.containsKey(firstLetterOfName)) {
+        groupedByLetterMap[firstLetterOfName] = [];
       }
-      groupedByLetterList[firstLetterOfName].add(AuthorModel.fromMap(authorData));
+      groupedByLetterMap[firstLetterOfName].add(AuthorModel.fromMap(authorData));
 
       return AuthorModel.fromMap(authorData);
     });
-    groupedByLetterList.forEach((key, value) {
+    groupedByLetterMap.forEach((key, value) {
       value.sort((a, b) => a.name.compareTo(b.name));
     });
+    var groupedByLetterList = groupedByLetterMap.entries.toList();
+    groupedByLetterList.sort((a, b) => a.key.compareTo(b.key));
 
-    return AuthorsStateLoaded(groupedByLetterList.entries.toList());
+    return AuthorsStateLoaded(groupedByLetterList);
   }
 }

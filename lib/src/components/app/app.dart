@@ -10,6 +10,7 @@ import 'package:library/src/screens/library/bloc/library_bloc.dart';
 import 'package:library/src/screens/book-info/book-info.dart';
 import 'package:library/src/screens/ratings/ratings.dart';
 import 'package:library/src/screens/authors/authors.dart';
+import 'package:library/src/screens/author/author.dart';
 import 'package:library/src/repositories/repositories.dart';
 import 'package:library/src/services/service-locator.dart';
 
