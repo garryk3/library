@@ -24,6 +24,8 @@ class Authors extends StatelessWidget {
           Expanded(
             child: BlocBuilder<AuthorsBloc, AuthorsState>(
               builder: (context, state) {
+                var bloc = BlocProvider.of<AuthorsBloc>(context);
+
                 if (state is AuthorsStateLoaded) {
                   return ListView.builder(
                     itemCount: state.authorsGroupedByLetterList.length,
@@ -44,9 +46,7 @@ class Authors extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 4.0),
                               child: InkWell(
-                                onTap: () {
-                                  print('tap author ${author.name}');
-                                },
+                                onTap: bloc.loadAuthorInfo(context),
                                 child: Text(
                                   author.name,
                                   style: const TextStyle(

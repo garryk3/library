@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:library/src/repositories/repositories.dart';
 import 'package:library/src/models/author-model.dart';
+import 'package:library/src/components/app/app.dart';
 
 part 'authors_event.dart';
 part 'authors_state.dart';
@@ -17,6 +18,10 @@ class AuthorsBloc extends Bloc<AuthorsEvent, AuthorsState> {
   AuthorsBloc(BuildContext context)
       : _calibreRepository = RepositoryProvider.of<CalibreRepository>(context),
         super(AuthorsInitial());
+
+  Function loadAuthorInfo(BuildContext context) => () {
+        AppRouter.goTo(context, Routes.author);
+      };
 
   @override
   Stream<AuthorsState> mapEventToState(

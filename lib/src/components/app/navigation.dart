@@ -12,7 +12,7 @@ class AppRouter {
   }
 
   static void goTo(BuildContext context, Routes route) {
-    Navigator.pushReplacementNamed(context, route.toString());
+    Navigator.pushNamed(context, route.toString());
   }
 
   static void goBack(BuildContext context) {
