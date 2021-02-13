@@ -85,8 +85,28 @@ class Author extends StatelessWidget {
                             for (final tab in tabs)
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0),
-                                child: Column(
-                                  children: [Text(tab)],
+                                child: ListView(
+                                  children: [
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                    Text(tab),
+                                  ],
                                 ),
                               ),
                           ],
