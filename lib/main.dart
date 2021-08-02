@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:sentry/sentry.dart';
+import 'package:get/get.dart';
 
-import 'package:library/src/components/app/app.dart';
-import 'package:library/src/services/service-locator.dart';
-import 'package:library/src/configs/configs.dart';
+import 'package:library/src/domain/di/container.dart';
+import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/infrastructure/theme/theme.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  initServices(configs);
+  DIContainer().init();
+  Get.changeTheme(AppTheme);
 
-  final sentry = SentryClient(dsn: configs['sentry']['key']);
-
-  runZonedGuarded(
-    () => runApp(LibraryApp()),
-    (error, stackTrace) async {
-      await sentry.captureException(
-        exception: error,
-        stackTrace: stackTrace,
-      );
-    },
-  );
+  runApp(GetMaterialApp(
+    initialRoute: RoutesNames.home.toString(),
+    getPages: pages,
+  ));
 }
