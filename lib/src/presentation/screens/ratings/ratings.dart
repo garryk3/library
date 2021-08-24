@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:library/src/components/app/app.dart';
+import 'package:library/src/presentation/app/router.dart';
 
 class Ratings extends StatelessWidget {
-  const Ratings({Key key}) : super(key: key);
+  const Ratings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-        onPressed: () async {
-          AppRouter.goTo(context, Routes.home);
-        },
-        child: Text('ratings'));
+    return Center(
+      child: Container(
+        child: Container(
+          child: ElevatedButton(
+              onPressed: () async {
+                await router.routeToHome();
+              },
+              child: Text('ratings')),
+        ),
+      ),
+    );
   }
 }

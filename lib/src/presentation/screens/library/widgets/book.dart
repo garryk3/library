@@ -1,15 +1,16 @@
 part of '../library.dart';
 
-final _pathToCalibreFolder = getService<DbProvider>().calibreFolderPath;
+// final _pathToCalibreFolder = getService<DbProvider>().calibreFolderPath;
 
 class Book extends StatelessWidget {
   final BookModel _model;
-  const Book(this._model, {Key key}) : super(key: key);
+  const Book(this._model, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final coverFile = File(join(
-      _pathToCalibreFolder,
+      // _pathToCalibreFolder,
+      '',
       _model.path,
       _model.coverFileName,
     ));
@@ -22,9 +23,12 @@ class Book extends StatelessWidget {
         children: [
           if (_model.rating != null)
             Positioned(
-              child: Text('${(_model.rating ~/ 2).toString()}/5', style: const TextStyle(color: Colors.white)),
               left: 8.0,
               top: 8.0,
+              child: Text(
+                _model.rating == null ? '${(_model.rating! ~/ 2).toString()}/5' : '',
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
           if (hasCover)
             Image.file(
@@ -69,7 +73,8 @@ class Book extends StatelessWidget {
                           height: 5.0,
                         ),
                         Text(
-                          _model.tags,
+                          // _model.tags,
+                          'hh',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 12.0),

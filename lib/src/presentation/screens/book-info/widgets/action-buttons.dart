@@ -1,10 +1,14 @@
 part of '../book-info.dart';
 
 class BookinfoActionButtons extends StatefulWidget {
-  final AppDbRepository appDbRepository;
+  // final AppDbRepository appDbRepository;
   final BookInfoModel model;
-  BookinfoActionButtons(BuildContext context, this.model, {Key key})
-      : appDbRepository = RepositoryProvider.of<AppDbRepository>(context),
+
+  BookinfoActionButtons(
+    BuildContext context,
+    this.model, {
+    Key? key,
+  }) : //appDbRepository = RepositoryProvider.of<AppDbRepository>(context),
         super(key: key);
 
   @override
@@ -26,14 +30,14 @@ class _BookinfoActionButtonsState extends State<BookinfoActionButtons> {
     setState(() {
       isFavorites = newValue;
     });
-    widget.appDbRepository.saveFavoritesBook(widget.model.bookId, newValue);
+    // widget.appDbRepository.saveFavoritesBook(widget.model.bookId, newValue);
   }
 
   void _onTapRead(bool newValue) {
     setState(() {
       isReaded = newValue;
     });
-    widget.appDbRepository.saveReadBook(widget.model.bookId, newValue);
+    // widget.appDbRepository.saveReadBook(widget.model.bookId, newValue);
   }
 
   @override
@@ -42,20 +46,32 @@ class _BookinfoActionButtonsState extends State<BookinfoActionButtons> {
       margin: EdgeInsets.only(top: 16.0),
       child: Column(
         children: [
-          buildRow(text: 'В избранное', action: _onTapFavorites, value: isFavorites),
-          buildRow(text: 'Прочитано', action: _onTapRead, value: isReaded),
+          buildRow(
+            text: 'В избранное',
+            action: _onTapFavorites,
+            value: isFavorites,
+          ),
+          buildRow(
+            text: 'Прочитано',
+            action: _onTapRead,
+            value: isReaded,
+          ),
         ],
       ),
     );
   }
 
-  Widget buildRow({@required String text, @required Function action, @required bool value}) {
+  Widget buildRow({
+    required String text,
+    required void Function(bool) action,
+    required bool value,
+  }) {
     return Container(
       height: 24.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(child: Text(text), flex: 2),
+          Expanded(flex: 2, child: Text(text)),
           Switch(
             value: value,
             onChanged: action,

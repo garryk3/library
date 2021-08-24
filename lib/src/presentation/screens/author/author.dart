@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:library/src/presentation/widgets/heading/heading.dart';
 
-export 'bloc/author_bloc.dart';
-
 class Author extends StatelessWidget {
   final tabs = [
     'Книги из библиотеки',

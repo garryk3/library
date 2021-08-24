@@ -9,8 +9,8 @@ class BookModel extends Equatable {
   final int hasCover; // 1 or 0
   final String author;
   final String lang;
-  final String tags;
-  final int rating;
+  final String? tags;
+  final int? rating;
 
   BookModel.fromMap(Map<String, dynamic> bookData)
       : tags = bookData['tags'] as String,
@@ -24,5 +24,15 @@ class BookModel extends Equatable {
         rating = bookData['rating'] as int;
 
   @override
-  List<Object> get props => [title, path, hasCover, author, tags, lang, authorId, bookId, coverFileName];
+  List<Object?> get props => [
+        title,
+        path,
+        hasCover,
+        author,
+        tags,
+        lang,
+        authorId,
+        bookId,
+        coverFileName,
+      ];
 }

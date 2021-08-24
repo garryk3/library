@@ -24,9 +24,10 @@ class AppRoute extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     if (true) {
+      // change to validation db path
       return child;
     }
-    return GetPath();
+    // return GetPath();
   }
 
   @override

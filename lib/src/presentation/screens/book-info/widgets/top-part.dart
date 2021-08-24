@@ -3,7 +3,7 @@ part of '../book-info.dart';
 class BookinfoTopPart extends StatelessWidget {
   final BookInfoModel model;
 
-  const BookinfoTopPart(this.model, {Key key}) : super(key: key);
+  const BookinfoTopPart(this.model, {Key? key}) : super(key: key);
 
   Widget buildTextLine(String text) {
     return Text(
@@ -17,7 +17,8 @@ class BookinfoTopPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final coverFile = File(join(
-      _pathToCalibreFolder,
+      //_pathToCalibreFolder,
+      'test',
       model.path,
       model.coverFileName,
     ));
@@ -44,7 +45,7 @@ class BookinfoTopPart extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildTextLine('Рейтинг: ${(model.rating ~/ 2).toString()}/5'),
+                  if (model.rating != null) buildTextLine('Рейтинг: ${(model.rating! ~/ 2).toString()}/5'),
                   if (model.format != null) buildTextLine('Формат: ${model.format}'),
                   if (model.identType != null) buildTextLine('Идентификаторы: ${model.identType}'),
                   if (model.langCode != null) buildTextLine('Языки: ${model.langCode}'),

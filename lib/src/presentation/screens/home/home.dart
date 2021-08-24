@@ -2,11 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-import 'package:library/src/ui/heading/heading.dart';
+import 'package:library/src/presentation/widgets/heading/heading.dart';
 
 /// отвечает за отображение списка последних открытыx книг
 class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

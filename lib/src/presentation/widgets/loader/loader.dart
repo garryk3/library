@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-export 'bloc/loader_bloc.dart';
-
 class Loader extends StatelessWidget {
   const Loader({Key? key}) : super(key: key);
 

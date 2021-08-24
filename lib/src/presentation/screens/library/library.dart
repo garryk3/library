@@ -1,19 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:library/src/ui/heading/heading.dart';
-import 'package:library/src/services/service-locator.dart';
-import 'package:library/src/models/book-model.dart';
-
-import 'bloc/library_bloc.dart';
+import 'package:library/src/presentation/widgets/heading/heading.dart';
+import 'package:library/src/infrastructure/models/book.dart';
 
 part 'widgets/book.dart';
 
 class Library extends StatelessWidget {
-  const Library({Key key}) : super(key: key);
+  const Library({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,33 +27,34 @@ class Library extends StatelessWidget {
             child: Text('filters'),
           ),
           Expanded(
-            child: BlocBuilder<LibraryBloc, LibraryState>(
-              builder: (context, state) {
-                if (state is LibraryStateDataLoaded) {
-                  final bloc = BlocProvider.of<LibraryBloc>(context);
+            // child: BlocBuilder<LibraryBloc, LibraryState>(
+            //   builder: (context, state) {
+            //     if (state is LibraryStateDataLoaded) {
+            //       final bloc = BlocProvider.of<LibraryBloc>(context);
 
-                  return GridView.builder(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 8,
-                        crossAxisSpacing: 8,
-                        childAspectRatio: 1,
-                      ),
-                      itemCount: state.total,
-                      itemBuilder: (BuildContext context, int index) {
-                        final model = state.books[index];
-                        return GestureDetector(
-                          onTap: () {
-                            bloc.goToBookInfo(context, model.bookId);
-                          },
-                          child: Book(model),
-                        );
-                      });
-                }
-                return Text('loading...');
-              },
-            ),
+            //       return GridView.builder(
+            //           padding: EdgeInsets.symmetric(vertical: 8.0),
+            //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //             crossAxisCount: 2,
+            //             mainAxisSpacing: 8,
+            //             crossAxisSpacing: 8,
+            //             childAspectRatio: 1,
+            //           ),
+            //           itemCount: state.total,
+            //           itemBuilder: (BuildContext context, int index) {
+            //             final model = state.books[index];
+            //             return GestureDetector(
+            //               onTap: () {
+            //                 bloc.goToBookInfo(context, model.bookId);
+            //               },
+            //               child: Book(model),
+            //             );
+            //           });
+            //     }
+            //     return Text('loading...');
+            //   },
+            // ),
+            child: Text('loading...'),
           )
         ],
       ),
