@@ -3,19 +3,19 @@ import 'package:library/src/presentation/app/router.dart';
 
 class _MenuItem {
   final String title;
-  final RoutesNames to;
+  final String to;
   const _MenuItem(this.title, this.to);
 }
 
 List<_MenuItem> _menuData = const [
-  _MenuItem('Последние книги', RoutesNames.home),
-  _MenuItem('Библиотека', RoutesNames.library),
-  _MenuItem('Авторы', RoutesNames.authors),
-  _MenuItem('Оценки', RoutesNames.ratings),
-  _MenuItem('Избранное', RoutesNames.ratings),
-  _MenuItem('Серии', RoutesNames.home),
-  _MenuItem('Теги', RoutesNames.home),
-  _MenuItem('Жанры', RoutesNames.home),
+  _MenuItem('Последние книги', '/home'),
+  _MenuItem('Библиотека', '/library'),
+  _MenuItem('Авторы', '/authors'),
+  _MenuItem('Оценки', '/ratings'),
+  _MenuItem('Избранное', '/favorites'),
+  _MenuItem('Серии', '/series'),
+  _MenuItem('Теги', '/tags'),
+  _MenuItem('Жанры', '/genres'),
 ];
 
 class Menu extends StatelessWidget {

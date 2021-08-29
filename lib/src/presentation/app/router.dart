@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 
 import 'package:library/src/presentation/screens/get-path/get-path.dart';
 import 'package:library/src/presentation/screens/home/index.dart';
@@ -11,28 +10,18 @@ import 'package:library/src/presentation/screens/author/author.dart';
 
 import 'package:library/src/presentation/app/route.dart';
 
-enum RoutesNames {
-  home,
-  ratings,
-  getPath,
-  library,
-  bookInfo,
-  authors,
-  author,
-}
-
 final pages = [
   GetPage(
-      name: RoutesNames.home.toString(),
+      name: '/home',
       page: () => AppRoute(
             child: Home(),
           )),
-  // GetPage(name: RoutesNames.ratings.toString(), page: () => Ratings()),
-  // GetPage(name: RoutesNames.getPath.toString(), page: () => GetPath()),
-  // GetPage(name: RoutesNames.library.toString(), page: () => Library()),
-  // GetPage(name: RoutesNames.bookInfo.toString(), page: () => BookInfo()),
-  // GetPage(name: RoutesNames.author.toString(), page: () => Author()),
-  // GetPage(name: RoutesNames.authors.toString(), page: () => Authors()),
+  GetPage(name: '/ratings', page: () => Ratings()),
+  GetPage(name: '/get-path', page: () => GetPath()),
+  GetPage(name: '/library', page: () => Library()),
+  GetPage(name: '/book-info', page: () => BookInfo()),
+  GetPage(name: '/author', page: () => Author()),
+  GetPage(name: '/authors', page: () => Authors()),
 ];
 
 class _AppRouter {
@@ -41,31 +30,31 @@ class _AppRouter {
   }
 
   Future<dynamic>? routeToHome() {
-    return routeToNamed(RoutesNames.home.toString());
+    return routeToNamed('/home');
   }
 
   Future<dynamic>? routeToRatings() {
-    return routeToNamed(RoutesNames.ratings.toString());
+    return routeToNamed('/ratings');
   }
 
   Future<dynamic>? routeToGetPath() {
-    return routeToNamed(RoutesNames.getPath.toString());
+    return routeToNamed('/get-path');
   }
 
   Future<dynamic>? routeToLibrary() {
-    return routeToNamed(RoutesNames.library.toString());
+    return routeToNamed('/library');
   }
 
   Future<dynamic>? routeToBookInfo() {
-    return routeToNamed(RoutesNames.bookInfo.toString());
+    return routeToNamed('/book-info');
   }
 
   Future<dynamic>? routeToAuthor() {
-    return routeToNamed(RoutesNames.author.toString());
+    return routeToNamed('/author');
   }
 
   Future<dynamic>? routeToAuthors() {
-    return routeToNamed(RoutesNames.authors.toString());
+    return routeToNamed('/authors');
   }
 
   void goBack() {
