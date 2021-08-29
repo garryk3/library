@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 import 'package:library/src/presentation/screens/get-path/get-path.dart';
 import 'package:library/src/presentation/screens/home/index.dart';
@@ -7,6 +8,8 @@ import 'package:library/src/presentation/screens/book-info/book-info.dart';
 import 'package:library/src/presentation/screens/ratings/ratings.dart';
 import 'package:library/src/presentation/screens/authors/authors.dart';
 import 'package:library/src/presentation/screens/author/author.dart';
+
+import 'package:library/src/presentation/app/route.dart';
 
 enum RoutesNames {
   home,
@@ -19,13 +22,17 @@ enum RoutesNames {
 }
 
 final pages = [
-  GetPage(name: RoutesNames.home.toString(), page: () => Home()),
-  GetPage(name: RoutesNames.ratings.toString(), page: () => Ratings()),
-  GetPage(name: RoutesNames.getPath.toString(), page: () => GetPath()),
-  GetPage(name: RoutesNames.library.toString(), page: () => Library()),
-  GetPage(name: RoutesNames.bookInfo.toString(), page: () => BookInfo()),
-  GetPage(name: RoutesNames.author.toString(), page: () => Author()),
-  GetPage(name: RoutesNames.authors.toString(), page: () => Authors()),
+  GetPage(
+      name: RoutesNames.home.toString(),
+      page: () => AppRoute(
+            child: Home(),
+          )),
+  // GetPage(name: RoutesNames.ratings.toString(), page: () => Ratings()),
+  // GetPage(name: RoutesNames.getPath.toString(), page: () => GetPath()),
+  // GetPage(name: RoutesNames.library.toString(), page: () => Library()),
+  // GetPage(name: RoutesNames.bookInfo.toString(), page: () => BookInfo()),
+  // GetPage(name: RoutesNames.author.toString(), page: () => Author()),
+  // GetPage(name: RoutesNames.authors.toString(), page: () => Authors()),
 ];
 
 class _AppRouter {
