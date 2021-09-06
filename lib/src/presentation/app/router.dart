@@ -11,17 +11,13 @@ import 'package:library/src/presentation/screens/author/author.dart';
 import 'package:library/src/presentation/app/route.dart';
 
 final pages = [
-  GetPage(
-      name: '/home',
-      page: () => AppRoute(
-            child: Home(),
-          )),
-  GetPage(name: '/ratings', page: () => Ratings()),
-  GetPage(name: '/get-path', page: () => GetPath()),
-  GetPage(name: '/library', page: () => Library()),
-  GetPage(name: '/book-info', page: () => BookInfo()),
-  GetPage(name: '/author', page: () => Author()),
-  GetPage(name: '/authors', page: () => Authors()),
+  GetPage(name: '/', page: () => AppRoute(child: GetPathScreen())),
+  GetPage(name: '/home', page: () => AppRoute(child: HomeScreen())),
+  GetPage(name: '/ratings', page: () => AppRoute(child: Ratings())),
+  GetPage(name: '/library', page: () => AppRoute(child: Library())),
+  GetPage(name: '/book-info', page: () => AppRoute(child: BookInfo())),
+  GetPage(name: '/author', page: () => AppRoute(child: Author())),
+  GetPage(name: '/authors', page: () => AppRoute(child: Authors())),
 ];
 
 class _AppRouter {
@@ -33,12 +29,20 @@ class _AppRouter {
     return routeToNamed('/home');
   }
 
+  Future<dynamic>? routeOffToHome() {
+    return Get.offNamed('/home');
+  }
+
   Future<dynamic>? routeToRatings() {
     return routeToNamed('/ratings');
   }
 
   Future<dynamic>? routeToGetPath() {
-    return routeToNamed('/get-path');
+    return routeToNamed('/');
+  }
+
+  Future<dynamic>? routeOffToGetPath() {
+    return Get.offNamed('/');
   }
 
   Future<dynamic>? routeToLibrary() {
@@ -59,6 +63,11 @@ class _AppRouter {
 
   void goBack() {
     return Get.back();
+  }
+
+  void onChangeRoute(Routing? routing) {
+    if (routing?.current == '/') {}
+    print('change $routing');
   }
 }
 

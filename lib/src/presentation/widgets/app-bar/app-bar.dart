@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:library/src/presentation/app/app.dart';
+import 'package:library/src/presentation/app/router.dart';
 
 class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TopAppBar({Key? key}) : super(key: key);

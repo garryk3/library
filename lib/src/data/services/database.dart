@@ -8,18 +8,18 @@ import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 class DbService extends GetxService implements IDatabase {
   final String _dbFileName = 'metadata.db';
   late String _dbFolderPath;
-
   Database? _db;
 
   bool get isOpened => _db != null;
 
+  @override
   Future<bool> checkDatabase(String path) {
     return databaseExists(path);
   }
 
   @override
-  Future<void> open({required String forderPath}) async {
-    _dbFolderPath = forderPath;
+  Future<void> open({required String folderPath}) async {
+    _dbFolderPath = folderPath;
     final path = join(_dbFolderPath, _dbFileName);
     final isExist = await checkDatabase(path);
 

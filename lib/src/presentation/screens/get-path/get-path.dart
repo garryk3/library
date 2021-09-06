@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 // import 'package:library/src/components/app/app.dart';
-// import 'package:library/src/screens/get-path/get-path-controller.dart';
+import 'package:library/src/presentation/screens/get-path/view-controller.dart';
+import 'package:library/src/presentation/app/state-controller.dart';
+import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/presentation/widgets/typography/typography.dart';
 
-class GetPath extends StatelessWidget {
-  GetPath({Key? key}) : super(key: key);
-  // final _controller = GetPathController();
+class GetPathScreen extends StatelessWidget {
+  GetPathScreen({Key? key}) : super(key: key);
+
+  final _controller = GetPathViewController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,67 +23,64 @@ class GetPath extends StatelessWidget {
           child: Column(
             children: [
               InkWell(
-                onTap: () {
-                  //  _controller.openFileSystem(context);
-                },
+                onTap: _controller.openFileSystem,
                 child: Column(
                   children: [
-                    Icon(Icons.file_download),
-                    // BlocBuilder<AppBloc, AppState>(
-                    //   builder: (BuildContext context, state) {
-                    //     var headerInfo = state.pathToCalibre == null
-                    //         ? 'Укажите путь к папке с библиотекой Calibre'
-                    //         : 'Текущий путь к папке с библиотекой Calibre';
-                    //     return Text(
-                    //       headerInfo,
-                    //       textAlign: TextAlign.center,
-                    //     );
-                    //   },
-                    // ),
-                    Text(
-                      'headerInfo',
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 24),
+                      child: Icon(
+                        Icons.file_download,
+                        size: 50,
+                      ),
+                    ),
+                    Obx(
+                      () {
+                        final path = appStateController.value.dbPath;
+                        final text = path != null
+                            ? 'Путь к базе данных: ${appStateController.value.dbPath}'
+                            : 'Укажите путь к базе данных Calibre';
+                        return BaseText(text: text);
+                      },
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                // child: BlocBuilder<AppBloc, AppState>(
-                //   builder: (BuildContext context, state) {
-                //     var style = const TextStyle(
-                //         color: Colors.black54,
-                //         fontSize: 13.0,
-                //         fontStyle: FontStyle.italic,
-                //         decoration: TextDecoration.underline);
+                  padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: Obx(
+                    () {
+                      final path = appStateController.value.dbPath;
+                      final isDbExist = appStateController.value.isDbExist;
 
-                //     if (state.pathToCalibre == null) {
-                //       return Text('---', style: style);
-                //     }
-                //     return Column(
-                //       children: [
-                //         Text(state.pathToCalibre, style: style),
-                //         if (!state.isCalibreExist)
-                //           Padding(
-                //             padding: EdgeInsets.all(12.0),
-                //             child: Text('Файл metadata.db в указанной папке отсутствует!!!', style: style),
-                //           ),
-                //         SizedBox(
-                //           width: double.infinity,
-                //           height: 40.0,
-                //           child: FlatButton(
-                //               color: Colors.blue,
-                //               onPressed: () {
-                //                 AppRouter.goTo(context, Routes.home);
-                //               },
-                //               child: Text('Перейти на главную')),
-                //         ),
-                //       ],
-                //     );
-                //   },
-                // ),
-                child: Text('Перейти на главную'),
-              ),
+                      if (path == null) {
+                        return BaseText.warning(text: '---');
+                      }
+                      return Column(
+                        children: [
+                          if (!isDbExist)
+                            Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: BaseText.warning(
+                                text: 'Файл metadata.db в указанной папке отсутствует!',
+                                children: [
+                                  TextSpan(text: 'Часть функций приложения будет недоступна!'),
+                                ],
+                              ),
+                            ),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 40.0,
+                            child: TextButton(
+                              onPressed: router.routeToHome,
+                              child: BaseText.link(
+                                text: 'Перейти на главную',
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  )),
             ],
           )),
     );

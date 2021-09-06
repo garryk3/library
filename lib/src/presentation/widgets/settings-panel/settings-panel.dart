@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:library/src/presentation/app/app.dart';
+import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/presentation/app/state-controller.dart';
 
 class SettingsPanel extends StatelessWidget {
   const SettingsPanel({Key? key}) : super(key: key);
-  final _mockDbAddress = 'mock address';
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,17 @@ class SettingsPanel extends StatelessWidget {
                           'Расположение базы данных Calibre: ',
                           style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
                         ),
-                        Text(_mockDbAddress, style: const TextStyle(fontSize: 12.0))
+                        Obx(() {
+                          final path = appStateController.value.dbPath;
+                          final text = path ?? 'не задано';
+                          final color = path == null ? Colors.redAccent : Colors.black54;
+
+                          return Text(text,
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                color: color,
+                              ));
+                        })
                       ],
                     ),
                   ),

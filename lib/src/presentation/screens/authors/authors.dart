@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:library/src/presentation/widgets/heading/heading.dart';
+import 'package:library/src/presentation/widgets/typography/heading.dart';
 
 class Authors extends StatelessWidget {
   const Authors({Key? key}) : super(key: key);

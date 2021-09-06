@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:library/src/presentation/widgets/heading/heading.dart';
+import 'package:library/src/presentation/widgets/typography/heading.dart';
 import 'package:library/src/infrastructure/models/book.dart';
 
 part 'widgets/book.dart';
