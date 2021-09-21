@@ -16,13 +16,13 @@ class BaseText extends StatelessWidget {
     required this.text,
     this.children,
     TextStyle? style,
-  }) : style = (style ?? TextStyle(color: Colors.amber)).copyWith(color: Colors.redAccent);
+  }) : style = (style ?? TextStyle()).copyWith(color: Colors.redAccent);
 
   BaseText.link({
     required this.text,
     this.children,
     TextStyle? style,
-  }) : style = (style ?? TextStyle(color: Colors.amber)).copyWith(color: Colors.lightBlue[900]);
+  }) : style = (style ?? TextStyle()).copyWith(color: Colors.lightBlue[900]);
 
   @override
   Widget build(BuildContext context) {

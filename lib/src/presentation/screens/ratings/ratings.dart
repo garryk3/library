@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/presentation/app/app.router.dart';
 
 class Ratings extends StatelessWidget {
   const Ratings({Key? key}) : super(key: key);

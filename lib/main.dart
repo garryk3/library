@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:library/src/domain/di/container.dart';
-import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/presentation/app/app.router.dart';
 import 'package:library/src/infrastructure/theme/theme.dart';
 
 void main() async {

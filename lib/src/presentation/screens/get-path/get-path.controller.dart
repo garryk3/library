@@ -4,10 +4,15 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 import 'package:library/src/infrastructure/constants/constants.dart';
-import 'package:library/src/presentation/app/state-controller.dart';
 
-class GetPathViewController {
-  final IDatabase _db = Get.find();
+class GetPathController {
+  final IDbRepository _dbRepository = Get.find();
+  String get directoryPath => _dbRepository.directoryPath.value;
+  RxBool get isDbExist => _dbRepository.isDbExist;
+
+  Future<void> _savePathToStore(String path) {
+    return GetStorage().write(DB_PATH_KEY, path);
+  }
 
   Future<void> openFileSystem() async {
     try {
@@ -15,15 +20,8 @@ class GetPathViewController {
       if (path == null) {
         return;
       }
-      final isDbExist = await _db.checkDatabase(path);
-
-      appStateController.update((state) {
-        state!.dbPath = path;
-        state.isDbExist = isDbExist;
-      });
-      if (isDbExist) {
-        await GetStorage().write(DB_PATH_KEY, path);
-      }
+      await _dbRepository.openDb(path);
+      await _savePathToStore(path);
     } catch (error) {
       // await Get.defaultDialog(title: error.message);
     }

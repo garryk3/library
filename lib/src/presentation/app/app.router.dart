@@ -8,7 +8,7 @@ import 'package:library/src/presentation/screens/ratings/ratings.dart';
 import 'package:library/src/presentation/screens/authors/authors.dart';
 import 'package:library/src/presentation/screens/author/author.dart';
 
-import 'package:library/src/presentation/app/route.dart';
+import 'package:library/src/presentation/app/app.route.dart';
 
 final pages = [
   GetPage(name: '/', page: () => AppRoute(child: GetPathScreen())),

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// import 'package:library/src/components/app/app.dart';
-import 'package:library/src/presentation/screens/get-path/view-controller.dart';
-import 'package:library/src/presentation/app/state-controller.dart';
-import 'package:library/src/presentation/app/router.dart';
+import 'package:library/src/presentation/app/app.dart';
+import 'package:library/src/presentation/screens/get-path/get-path.controller.dart';
 import 'package:library/src/presentation/widgets/typography/typography.dart';
 
 class GetPathScreen extends StatelessWidget {
   GetPathScreen({Key? key}) : super(key: key);
 
-  final _controller = GetPathViewController();
+  final _controller = GetPathController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,8 @@ class GetPathScreen extends StatelessWidget {
                     ),
                     Obx(
                       () {
-                        final path = appStateController.value.dbPath;
-                        final text = path != null
-                            ? 'Путь к базе данных: ${appStateController.value.dbPath}'
+                        final text = _controller.directoryPath != ''
+                            ? 'Путь к базе данных: ${_controller.directoryPath}'
                             : 'Укажите путь к базе данных Calibre';
                         return BaseText(text: text);
                       },
@@ -49,15 +46,12 @@ class GetPathScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                   child: Obx(
                     () {
-                      final path = appStateController.value.dbPath;
-                      final isDbExist = appStateController.value.isDbExist;
-
-                      if (path == null) {
+                      if (_controller.directoryPath == '') {
                         return BaseText.warning(text: '---');
                       }
                       return Column(
                         children: [
-                          if (!isDbExist)
+                          if (!_controller.isDbExist.value)
                             Padding(
                               padding: EdgeInsets.all(12.0),
                               child: BaseText.warning(

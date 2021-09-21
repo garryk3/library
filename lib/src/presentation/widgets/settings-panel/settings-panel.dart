@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:library/src/presentation/app/router.dart';
-import 'package:library/src/presentation/app/state-controller.dart';
+import 'package:library/src/presentation/app/app.router.dart';
+import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 
 class SettingsPanel extends StatelessWidget {
-  const SettingsPanel({Key? key}) : super(key: key);
+  final IDbRepository _dbRepository = Get.find();
+
+  SettingsPanel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +51,9 @@ class SettingsPanel extends StatelessWidget {
                           style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
                         ),
                         Obx(() {
-                          final path = appStateController.value.dbPath;
-                          final text = path ?? 'не задано';
-                          final color = path == null ? Colors.redAccent : Colors.black54;
+                          final path = _dbRepository.directoryPath.value;
+                          final text = path != '' ? path : 'не задано';
+                          final color = path == '' ? Colors.redAccent : Colors.black54;
 
                           return Text(text,
                               style: TextStyle(
