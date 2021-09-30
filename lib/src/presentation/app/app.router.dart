@@ -11,7 +11,7 @@ import 'package:library/src/presentation/screens/author/author.dart';
 import 'package:library/src/presentation/app/app.route.dart';
 
 final pages = [
-  GetPage(name: '/', page: () => AppRoute(child: GetPathScreen())),
+  GetPage(name: '/get-path', page: () => AppRoute(child: GetPathScreen())),
   GetPage(name: '/home', page: () => AppRoute(child: HomeScreen())),
   GetPage(name: '/ratings', page: () => AppRoute(child: Ratings())),
   GetPage(name: '/library', page: () => AppRoute(child: Library())),
@@ -38,11 +38,11 @@ class _AppRouter {
   }
 
   Future<dynamic>? routeToGetPath() {
-    return routeToNamed('/');
+    return routeToNamed('/get-path');
   }
 
   Future<dynamic>? routeOffToGetPath() {
-    return Get.offNamed('/');
+    return Get.offNamed('/get-path');
   }
 
   Future<dynamic>? routeToLibrary() {

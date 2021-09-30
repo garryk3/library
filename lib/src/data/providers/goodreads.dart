@@ -4,6 +4,6 @@ import 'package:library/src/infrastructure/configs/configs.dart';
 
 final Map<String, dynamic> config = HttpConfig().goodreads;
 
-class GoodReadsApiProvider extends HttpService implements IHttp {
-  GoodReadsApiProvider() : super.fromConfig(config);
+class GoodReadsProvider extends HttpService implements IHttp {
+  GoodReadsProvider() : super.fromConfig(config);
 }

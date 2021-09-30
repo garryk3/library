@@ -1,48 +1,48 @@
 part of 'sql.dart';
 
-const String selectDbPath = '''
-  SELECT value FROM $tableAppSettings WHERE key = '$calibreColumnName'
-''';
+// const String selectDbPath = '''
+//   SELECT value FROM $tableAppSettings WHERE key = '$calibreColumnName'
+// ''';
 
 const String selectCalibreBooks = '''
-  SELECT 
-    group_concat($tableCalibreTags.name) as tags, 
-    $tableCalibreLang.lang_code as lang, 
-    $tableCalibreAuthors.id as authorId, 
-    title, 
-    $tableCalibreBooks.id as bookId, 
-    author_sort as author, 
-    path, 
+  SELECT
+    group_concat($tableCalibreTags.name) as tags,
+    $tableCalibreLang.lang_code as lang,
+    $tableCalibreAuthors.id as authorId,
+    title,
+    $tableCalibreBooks.id as bookId,
+    author_sort as author,
+    path,
     has_cover as hasCover,
     $tableCalibreRatings.rating
 	FROM $tableCalibreBooks
 		LEFT JOIN $tableCalibreAuthors ON $tableCalibreAuthors.sort = $tableCalibreBooks.author_sort
-		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id 
+		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id
 		LEFT JOIN $tableCalibreLang ON $tableCalibreLang.id = $tableCalibreBooksLangLinks.lang_code
 		LEFT JOIN $tableCalibreBooksTagsLink ON $tableCalibreBooksTagsLink.book = $tableCalibreBooks.id
 		LEFT JOIN $tableCalibreTags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
     LEFT JOIN $tableCalibreBooksRatingsLink ON $tableCalibreBooks.id = $tableCalibreBooksRatingsLink.book
 	  LEFT JOIN $tableCalibreRatings ON $tableCalibreBooksRatingsLink.rating = $tableCalibreRatings.id
-		
+
 	GROUP BY $tableCalibreBooks.title
   ORDER by $tableCalibreRatings.rating DESC
 ''';
 
 const String selectRaitings = '''
-SELECT title, ratings.rating from $tableCalibreBooks 
+SELECT title, ratings.rating from $tableCalibreBooks
 	JOIN $tableCalibreBooksRatingsLink ON $tableCalibreBooks.id = $tableCalibreBooksRatingsLink.book
 	JOIN $tableCalibreRatings ON $tableCalibreBooksRatingsLink.rating = $tableCalibreRatings.id
 ''';
 
 const String selectCalibreBookInfo = '''
-  SELECT 
-    group_concat($tableCalibreTags.name) as tags, 
-    $tableCalibreLang.lang_code as langCode, 
-    $tableCalibreAuthors.id as authorId, 
-    title, 
-    $tableCalibreBooks.id as bookId, 
-    author_sort as author, 
-    path, 
+  SELECT
+    group_concat($tableCalibreTags.name) as tags,
+    $tableCalibreLang.lang_code as langCode,
+    $tableCalibreAuthors.id as authorId,
+    title,
+    $tableCalibreBooks.id as bookId,
+    author_sort as author,
+    path,
     has_cover as hasCover,
     $tableCalibreRatings.rating,
     $tableCalibreIdentifiers.type as identType,
@@ -53,7 +53,7 @@ const String selectCalibreBookInfo = '''
     $tableCalibreBooksSeriesLink.series as seriesId
 	FROM $tableCalibreBooks
 		LEFT JOIN $tableCalibreAuthors ON $tableCalibreAuthors.sort = $tableCalibreBooks.author_sort
-		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id 
+		LEFT JOIN $tableCalibreBooksLangLinks ON $tableCalibreBooksLangLinks.book = $tableCalibreBooks.id
 		LEFT JOIN $tableCalibreLang ON $tableCalibreLang.id = $tableCalibreBooksLangLinks.lang_code
 		LEFT JOIN $tableCalibreBooksTagsLink ON $tableCalibreBooksTagsLink.book = $tableCalibreBooks.id
 		LEFT JOIN $tableCalibreTags ON $tableCalibreBooksTagsLink.tag = $tableCalibreTags.id
@@ -69,7 +69,7 @@ const String selectCalibreBookInfo = '''
 
 const String selectSeriesBooks = '''
 SELECT id as bookId, title, has_cover as hasCover, path
-	FROM $tableCalibreBooks 
+	FROM $tableCalibreBooks
 	WHERE $tableCalibreBooks.id in (
 		SELECT $tableCalibreBooksSeriesLink.book
 			FROM $tableCalibreBooksSeriesLink WHERE series = ? AND $tableCalibreBooksSeriesLink.book != ?
@@ -77,7 +77,7 @@ SELECT id as bookId, title, has_cover as hasCover, path
 ''';
 
 const selectBookSavedInfo = '''
-  SELECT read, favorites 
+  SELECT read, favorites
     FROM $tableAppBooks
     WHERE id = ?
 ''';

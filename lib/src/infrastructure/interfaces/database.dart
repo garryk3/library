@@ -1,6 +1,7 @@
 abstract class IDatabase {
-  Future<void> open({required String folderPath});
-  Future<bool> checkDatabase();
+  Future<void> open();
+
+  Future<void> initialize();
 
   Future<int>? insert(
     String table,

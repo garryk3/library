@@ -1,10 +1,10 @@
 part of 'sql.dart';
 
-// inserts and updates
+// // inserts and updates
 
-const String insertCalibrePath = '''
-  INSERT into $tableAppSettings(key, value) VALUES(?, ?)
-''';
+// const String insertCalibrePath = '''
+//   INSERT into $tableAppSettings(key, value) VALUES(?, ?)
+// ''';
 
 const String insertFavoriteBook = '''
   INSERT INTO $tableAppBooks(id, favorites) VALUES(?, ?)

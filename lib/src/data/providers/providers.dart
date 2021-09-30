@@ -1,1 +1,2 @@
-export 'goodreads-api.dart';
+export 'goodreads.dart';
+export 'calibre.dart';

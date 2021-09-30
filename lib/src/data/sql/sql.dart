@@ -27,3 +27,19 @@ const String tableCalibreSeries = '$calibreDbName.series';
 
 /// columns
 const String calibreColumnName = 'calibre';
+
+const String createAppTables = '''
+  CREATE TABLE IF NOT EXISTS $tableAppBooks (
+    id NOT NULL PRIMARY KEY UNIQUE,
+    read int,
+    favorites int
+  )
+''';
+
+const String attachDb = '''
+  ATTACH DATABASE ? AS $calibreDbName;
+''';
+
+const String detachDb = '''
+  DETACH DATABASE $calibreDbName;
+''';

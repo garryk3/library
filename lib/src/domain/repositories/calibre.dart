@@ -1,20 +1,32 @@
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 
-class CalibreRepository extends IDbRepository {
-  final IDatabase _dbController = Get.find();
+class CalibreRepository extends GetxService implements IDbRepository {
+  final _provider = Get.find<ICalibreProvider>();
 
   @override
-  RxBool isDbExist = false.obs;
+  RxBool isCalibreConnected = false.obs;
 
   @override
   RxString directoryPath = ''.obs;
 
   @override
-  Future<void> openDb(String path) async {
-    await _dbController.open(folderPath: path);
-    isDbExist.value = await _dbController.checkDatabase();
-    directoryPath.value = path;
+  Future<void> attachCalibreDb(String path) async {
+    try {
+      var dbFileName = await _provider.attachCalibreDb(path);
+
+      if (dbFileName != null) {
+        directoryPath.value = path;
+        isCalibreConnected.value = true;
+
+        // test
+        var response = await _provider.loadAuthors();
+        print(response);
+      }
+    } catch (error) {
+      Get.find<Logger>().e(error);
+    }
   }
 }

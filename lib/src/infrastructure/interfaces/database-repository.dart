@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
 abstract class IDbRepository {
-  late RxBool isDbExist;
+  late RxBool isCalibreConnected;
   late RxString directoryPath;
 
-  Future<void> openDb(String path);
+  Future<void> attachCalibreDb(String path);
 }

@@ -6,42 +6,42 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
+import 'package:library/src/data/sql/sql.dart';
 
 class DbService extends GetxService implements IDatabase {
-  final String _dbFileName = 'metadata.db';
+  final String _dbFileName = 'library.db';
 
   Database? _db;
 
-  bool get isOpened => _db != null;
+  bool get isOpened => _db?.isOpen ?? false;
 
   @override
-  Future<bool> checkDatabase() async {
-    var databasesPath = await getDatabasesPath();
-    var path = join(databasesPath, _dbFileName);
-
-    return databaseExists(path);
+  Future<void> initialize() async {
+    await open();
   }
 
   @override
-  Future<void> open({required String folderPath}) async {
-    var dbFilePath = join(await getDatabasesPath(), _dbFileName);
-    final pathToLoadedDbFile = join(folderPath, _dbFileName);
-    final isExist = await checkDatabase();
-    var status = await Permission.storage.request();
-
-    if (!isExist && status == PermissionStatus.granted) {
-      try {
-        await Directory(dirname(pathToLoadedDbFile)).create(recursive: true);
-
-        var data = await File(join(folderPath, _dbFileName)).readAsBytes();
-        List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-        await File(dbFilePath).writeAsBytes(bytes, flush: true);
-
-        _db = await openDatabase(dbFilePath);
-      } catch (error) {
-        print('error $status ${error.toString()}');
-      }
+  Future<void> open() async {
+    if (isOpened) {
+      return;
     }
+    var databasesPath = await getDatabasesPath();
+    var dbFilePath = join(await getDatabasesPath(), _dbFileName);
+    try {
+      var status = await Permission.storage.request();
+      if (status == PermissionStatus.granted) {
+        await Directory(databasesPath).create(recursive: true);
+      }
+    } catch (error) {
+      print(error);
+    }
+    _db = await openDatabase(
+      dbFilePath,
+      onCreate: (db, version) {
+        return db.execute(createAppTables);
+      },
+      version: 1,
+    );
   }
 
   @override
@@ -121,7 +121,8 @@ class DbService extends GetxService implements IDatabase {
     await _db?.close();
   }
 
-  void dispose() async {
+  @override
+  Future<void> onClose() async {
     await close();
   }
 }
