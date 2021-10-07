@@ -69,7 +69,7 @@ class SettingsPanel extends StatelessWidget {
             ],
           ),
           Positioned(
-            left: 0,
+            left: 10,
             bottom: 24.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,12 +77,7 @@ class SettingsPanel extends StatelessWidget {
                 TextButton.icon(
                   label: Text('Обновить бд Calibre'),
                   icon: Icon(Icons.refresh),
-                  onPressed: () {},
-                ),
-                TextButton.icon(
-                  label: Text('Сохранить бд приложения'),
-                  icon: Icon(Icons.save),
-                  onPressed: () {},
+                  onPressed: _dbRepository.reattachCalibreDb,
                 ),
               ],
             ),

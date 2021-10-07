@@ -5,6 +5,7 @@ import 'package:library/src/data/providers/providers.dart';
 import 'package:library/src/data/services/services.dart';
 import 'package:library/src/domain/repositories/repositories.dart';
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
+import 'package:library/src/infrastructure/utils/notifications.dart';
 
 class DIContainer {
   Future<void> init() async {
@@ -16,6 +17,9 @@ class DIContainer {
       await service.initialize();
       return service;
     }, permanent: true);
+
+    Get.put<INotification>(Notification());
+
     Get.put(
       Logger(
         printer: PrettyPrinter(

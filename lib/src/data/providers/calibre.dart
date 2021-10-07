@@ -9,6 +9,7 @@ import 'package:library/src/data/sql/sql.dart';
 class CalibreProvider extends GetxService implements ICalibreProvider {
   final _dbService = Get.find<IDatabase>();
   final String _attachDbFileName = 'metadata.db';
+  bool _isCalibreAttached = false;
 
   @override
   Future<String?>? attachCalibreDb(String calibreFolderPath) async {
@@ -20,8 +21,11 @@ class CalibreProvider extends GetxService implements ICalibreProvider {
         throw Error();
       }
 
-      await dettachCalibreDb();
+      if (_isCalibreAttached) {
+        await dettachCalibreDb();
+      }
       await _dbService.execute(attachDb, [dbFilePath]);
+      _isCalibreAttached = true;
       return dbFilePath;
     } catch (error) {
       Get.find<Logger>().e(error);

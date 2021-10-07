@@ -5,12 +5,13 @@ import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 
 class CalibreRepository extends GetxService implements IDbRepository {
   final _provider = Get.find<ICalibreProvider>();
-
-  @override
-  RxBool isCalibreConnected = false.obs;
+  final _notification = Get.find<INotification>();
 
   @override
   RxString directoryPath = ''.obs;
+
+  @override
+  RxBool get isCalibreConnected => (directoryPath.value.isNotEmpty).obs;
 
   @override
   Future<void> attachCalibreDb(String path) async {
@@ -19,14 +20,33 @@ class CalibreRepository extends GetxService implements IDbRepository {
 
       if (dbFileName != null) {
         directoryPath.value = path;
-        isCalibreConnected.value = true;
 
         // test
         var response = await _provider.loadAuthors();
         print(response);
+      } else {
+        directoryPath.value = '';
       }
     } catch (error) {
       Get.find<Logger>().e(error);
+      if (directoryPath.value.isNotEmpty) {
+        directoryPath.value = '';
+      }
+      _notification.showError('Не удалось загрузить базу данных!');
+    }
+  }
+
+  @override
+  Future<void> reattachCalibreDb() async {
+    if (!isCalibreConnected.value) {
+      return;
+    }
+    try {
+      await _provider.dettachCalibreDb();
+      await _provider.attachCalibreDb(directoryPath.value);
+      _notification.showInfo('База данных обновлена!');
+    } catch (error) {
+      _notification.showError('Во время обновления произошла ошибка!');
     }
   }
 }

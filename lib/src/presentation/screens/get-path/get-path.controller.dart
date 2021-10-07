@@ -33,7 +33,8 @@ class GetPathController {
       return;
     }
     await _dbRepository.attachCalibreDb(path);
-    await _savePathToStore(path);
-    _dbRepository.directoryPath.value = path;
+    if (_dbRepository.directoryPath.value.isNotEmpty) {
+      await _savePathToStore(path);
+    }
   }
 }
