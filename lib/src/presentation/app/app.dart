@@ -12,12 +12,13 @@ export 'app.router.dart';
 export 'app.route.dart';
 
 class App extends StatelessWidget {
-  final _calibreDirectoryPath = GetStorage().read<String?>(DB_PATH_KEY);
+  late final _calibreDirectoryPath;
 
   Future<bool> _initializeApp() async {
     await DIContainer().init();
     Get.changeTheme(AppTheme);
     await GetStorage.init();
+    _calibreDirectoryPath = GetStorage().read<String?>(DB_PATH_KEY);
 
     if (_calibreDirectoryPath != null) {
       var dbRepository = Get.find<IDbRepository>();

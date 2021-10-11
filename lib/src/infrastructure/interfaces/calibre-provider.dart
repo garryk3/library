@@ -1,5 +1,5 @@
 abstract class ICalibreProvider {
-  Future<String?>? attachCalibreDb(String calibreFolderPath);
+  Future<void> attachCalibreDb(String calibreFolderPath);
 
   Future<void>? dettachCalibreDb();
 

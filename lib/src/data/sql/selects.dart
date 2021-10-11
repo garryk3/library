@@ -1,9 +1,5 @@
 part of 'sql.dart';
 
-// const String selectDbPath = '''
-//   SELECT value FROM $tableAppSettings WHERE key = '$calibreColumnName'
-// ''';
-
 const String selectCalibreBooks = '''
   SELECT
     group_concat($tableCalibreTags.name) as tags,

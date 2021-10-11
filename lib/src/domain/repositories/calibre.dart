@@ -16,17 +16,8 @@ class CalibreRepository extends GetxService implements IDbRepository {
   @override
   Future<void> attachCalibreDb(String path) async {
     try {
-      var dbFileName = await _provider.attachCalibreDb(path);
-
-      if (dbFileName != null) {
-        directoryPath.value = path;
-
-        // test
-        var response = await _provider.loadAuthors();
-        print(response);
-      } else {
-        directoryPath.value = '';
-      }
+      await _provider.attachCalibreDb(path);
+      directoryPath.value = path;
     } catch (error) {
       Get.find<Logger>().e(error);
       if (directoryPath.value.isNotEmpty) {

@@ -12,7 +12,7 @@ class CalibreProvider extends GetxService implements ICalibreProvider {
   bool _isCalibreAttached = false;
 
   @override
-  Future<String?>? attachCalibreDb(String calibreFolderPath) async {
+  Future<void> attachCalibreDb(String calibreFolderPath) async {
     var dbFilePath = join(calibreFolderPath, _attachDbFileName);
 
     try {
@@ -26,9 +26,9 @@ class CalibreProvider extends GetxService implements ICalibreProvider {
       }
       await _dbService.execute(attachDb, [dbFilePath]);
       _isCalibreAttached = true;
-      return dbFilePath;
     } catch (error) {
       Get.find<Logger>().e(error);
+      rethrow;
     }
   }
 
@@ -71,5 +71,10 @@ class CalibreProvider extends GetxService implements ICalibreProvider {
       return data.single;
     }
     return null;
+  }
+
+  @override
+  Future<void> onClose() async {
+    await dettachCalibreDb();
   }
 }
