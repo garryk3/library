@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
+import 'package:library/src/infrastructure/models/authors.dart';
 
 class CalibreRepository extends GetxService implements IDbRepository {
   final _provider = Get.find<ICalibreProvider>();
@@ -9,6 +10,8 @@ class CalibreRepository extends GetxService implements IDbRepository {
 
   @override
   RxString directoryPath = ''.obs;
+  @override
+  Rx<AuthorsModel?>? authors = null.obs;
 
   @override
   RxBool get isCalibreConnected => (directoryPath.value.isNotEmpty).obs;
@@ -38,6 +41,20 @@ class CalibreRepository extends GetxService implements IDbRepository {
       _notification.showInfo('База данных обновлена!');
     } catch (error) {
       _notification.showError('Во время обновления произошла ошибка!');
+    }
+  }
+
+  @override
+  Future<void> loadAuthors() async {
+    try {
+      var authorsList = await _provider.loadAuthors();
+      if (authorsList != null) {
+        authors?.value = AuthorsModel.groupedFromMap(authorsList);
+      } else {
+        authors?.value = AuthorsModel([]);
+      }
+    } catch (error) {
+      _notification.showError(error.toString());
     }
   }
 }
