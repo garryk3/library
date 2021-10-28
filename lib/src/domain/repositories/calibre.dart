@@ -11,7 +11,7 @@ class CalibreRepository extends GetxService implements IDbRepository {
   @override
   RxString directoryPath = ''.obs;
   @override
-  Rx<AuthorsModel?>? authors = null.obs;
+  Rx<AuthorsModel> authors = AuthorsModel.empty().obs;
 
   @override
   RxBool get isCalibreConnected => (directoryPath.value.isNotEmpty).obs;
@@ -47,11 +47,12 @@ class CalibreRepository extends GetxService implements IDbRepository {
   @override
   Future<void> loadAuthors() async {
     try {
+      if (authors.value.authorsList.isNotEmpty) {
+        return;
+      }
       var authorsList = await _provider.loadAuthors();
       if (authorsList != null) {
-        authors?.value = AuthorsModel.groupedFromMap(authorsList);
-      } else {
-        authors?.value = AuthorsModel([]);
+        authors(AuthorsModel.groupedFromMap(authorsList));
       }
     } catch (error) {
       _notification.showError(error.toString());

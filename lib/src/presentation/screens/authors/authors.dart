@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 
 import 'package:library/src/presentation/widgets/typography/heading.dart';
 import 'package:library/src/presentation/screens/authors/authors.controller.dart';
+import 'package:library/src/presentation/app/app.dart';
 
-class Authors extends StatelessWidget {
-  final _controller = AuthorsController();
+class Authors extends GetView<AuthorsController> {
   Authors({Key? key}) : super(key: key);
 
   @override
@@ -22,8 +22,8 @@ class Authors extends StatelessWidget {
           ),
           Expanded(
             child: Obx(() {
-              var groupedAuthors = _controller.authors?.value?.authorsGroupedByLetterList;
-              if (groupedAuthors == null) {
+              var groupedAuthors = controller.groupedAuthors;
+              if (groupedAuthors.isEmpty) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
@@ -47,9 +47,8 @@ class Authors extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 4.0),
                           child: InkWell(
-                            // onTap: bloc.loadAuthorInfo(context),
                             onTap: () {
-                              print('test');
+                              router.routeToAuthor(author.id);
                             },
                             child: Text(
                               author.name,

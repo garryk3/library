@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:library/src/presentation/widgets/typography/heading.dart';
+import 'package:library/src/presentation/screens/author/author.controller.dart';
 
-class Author extends StatelessWidget {
-  final tabs = [
-    'Книги из библиотеки',
-    'Все книги',
-  ];
+final tabs = [
+  'Книги из библиотеки',
+  'Все книги',
+];
 
+class Author extends GetView<AuthorController> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -21,10 +23,12 @@ class Author extends StatelessWidget {
             children: [
               SizedBox(
                 width: screenWidth - 40.0,
-                child: Heading(
-                  title: 'author name author name author name author name author name author name',
-                  textAlign: TextAlign.left,
-                ),
+                child: Obx(() {
+                  return Heading(
+                    title: controller.author?.name ?? '',
+                    textAlign: TextAlign.left,
+                  );
+                }),
               ),
               InkWell(
                 onTap: () {

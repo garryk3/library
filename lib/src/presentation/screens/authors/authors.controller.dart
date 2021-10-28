@@ -1,15 +1,18 @@
 import 'package:get/get.dart';
 
-import 'package:library/src/infrastructure/models/authors.dart';
+import 'package:library/src/infrastructure/models/author.dart';
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
 
-class AuthorsController extends GetxService {
+class AuthorsController extends GetxController {
   final _dbRepository = Get.find<IDbRepository>();
-  Rx<AuthorsModel?>? get authors => _dbRepository.authors;
+  List<MapEntry<String, List<AuthorModel>>> get groupedAuthors =>
+      _dbRepository.authors.value.getSortedByFirstLetterAuthorsList();
 
   @override
   void onInit() {
-    _dbRepository.loadAuthors();
+    if (groupedAuthors.isEmpty) {
+      _dbRepository.loadAuthors();
+    }
     super.onInit();
   }
 }

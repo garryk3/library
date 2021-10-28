@@ -1,23 +1,55 @@
 import 'package:get/get.dart';
 
 import 'package:library/src/presentation/screens/get-path/get-path.dart';
+import 'package:library/src/presentation/screens/get-path/get-path.controller.dart';
 import 'package:library/src/presentation/screens/home/index.dart';
 import 'package:library/src/presentation/screens/library/library.dart';
 import 'package:library/src/presentation/screens/book-info/book-info.dart';
 import 'package:library/src/presentation/screens/ratings/ratings.dart';
 import 'package:library/src/presentation/screens/authors/authors.dart';
+import 'package:library/src/presentation/screens/authors/authors.controller.dart';
+import 'package:library/src/presentation/screens/author/author.controller.dart';
 import 'package:library/src/presentation/screens/author/author.dart';
-
 import 'package:library/src/presentation/app/app.route.dart';
 
 final pages = [
-  GetPage(name: '/get-path', page: () => AppRoute(child: GetPathScreen())),
-  GetPage(name: '/home', page: () => AppRoute(child: HomeScreen())),
-  GetPage(name: '/ratings', page: () => AppRoute(child: Ratings())),
-  GetPage(name: '/library', page: () => AppRoute(child: Library())),
-  GetPage(name: '/book-info', page: () => AppRoute(child: BookInfo())),
-  GetPage(name: '/author', page: () => AppRoute(child: Author())),
-  GetPage(name: '/authors', page: () => AppRoute(child: Authors())),
+  GetPage(
+    name: '/get-path',
+    page: () => AppRoute(child: GetPathScreen()),
+    binding: BindingsBuilder(() {
+      Get.lazyPut<GetPathController>(() => GetPathController());
+    }),
+  ),
+  GetPage(
+    name: '/home',
+    page: () => AppRoute(child: HomeScreen()),
+  ),
+  GetPage(
+    name: '/ratings',
+    page: () => AppRoute(child: Ratings()),
+  ),
+  GetPage(
+    name: '/library',
+    page: () => AppRoute(child: Library()),
+  ),
+  GetPage(
+    name: '/book-info',
+    page: () => AppRoute(child: BookInfo()),
+  ),
+  GetPage(
+    name: '/author/:id',
+    page: () => AppRoute(child: Author()),
+    binding: BindingsBuilder(() {
+      Get.lazyPut<AuthorController>(() => AuthorController());
+    }),
+  ),
+  GetPage(
+    name: '/authors',
+    page: () => AppRoute(child: Authors()),
+    binding: BindingsBuilder(() {
+      Get.lazyPut<AuthorsController>(() => AuthorsController());
+    }),
+  ),
 ];
 
 class _AppRouter {
@@ -53,8 +85,8 @@ class _AppRouter {
     return routeToNamed('/book-info');
   }
 
-  Future<dynamic>? routeToAuthor() {
-    return routeToNamed('/author');
+  Future<dynamic>? routeToAuthor(int id) {
+    return routeToNamed('/author/$id');
   }
 
   Future<dynamic>? routeToAuthors() {

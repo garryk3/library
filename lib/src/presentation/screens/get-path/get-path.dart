@@ -5,9 +5,7 @@ import 'package:library/src/presentation/app/app.dart';
 import 'package:library/src/presentation/screens/get-path/get-path.controller.dart';
 import 'package:library/src/presentation/widgets/typography/typography.dart';
 
-class GetPathScreen extends StatelessWidget {
-  final _controller = GetPathController();
-
+class GetPathScreen extends GetView<GetPathController> {
   GetPathScreen({Key? key}) : super(key: key);
 
   @override
@@ -21,7 +19,7 @@ class GetPathScreen extends StatelessWidget {
         child: Column(
           children: [
             InkWell(
-              onTap: _controller.getCalibreFolderPath,
+              onTap: controller.getCalibreFolderPath,
               child: Column(
                 children: [
                   Padding(
@@ -33,8 +31,8 @@ class GetPathScreen extends StatelessWidget {
                   ),
                   Obx(
                     () {
-                      final text = _controller.directoryPath != ''
-                          ? 'Путь к базе данных: ${_controller.directoryPath}'
+                      final text = controller.directoryPath != ''
+                          ? 'Путь к базе данных: ${controller.directoryPath}'
                           : 'Укажите путь к базе данных Calibre';
                       return BaseText(text: text);
                     },
@@ -46,12 +44,12 @@ class GetPathScreen extends StatelessWidget {
               padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Obx(
                 () {
-                  if (_controller.directoryPath == '') {
+                  if (controller.directoryPath == '') {
                     return BaseText.warning(text: '---');
                   }
                   return Column(
                     children: [
-                      if (!_controller.isCalibreConnected.value)
+                      if (!controller.isCalibreConnected.value)
                         Padding(
                           padding: EdgeInsets.all(12.0),
                           child: BaseText.warning(
