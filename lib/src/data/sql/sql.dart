@@ -14,6 +14,7 @@ const String tableAppBooks = 'BooksInfo';
 const String tableCalibreBooks = '$calibreDbName.books';
 const String tableCalibreAuthors = '$calibreDbName.authors';
 const String tableCalibreBooksLangLinks = '$calibreDbName.books_languages_link';
+const String tableCalibreBooksAuthorsLinks = '$calibreDbName.books_authors_link';
 const String tableCalibreLang = '$calibreDbName.languages';
 const String tableCalibreBooksTagsLink = '$calibreDbName.books_tags_link';
 const String tableCalibreTags = '$calibreDbName.tags';

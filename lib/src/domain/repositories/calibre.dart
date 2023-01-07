@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:library/src/infrastructure/models/book.dart';
 import 'package:logger/logger.dart';
 
 import 'package:library/src/infrastructure/interfaces/interfaces.dart';
@@ -52,10 +53,23 @@ class CalibreRepository extends GetxService implements IDbRepository {
       }
       var authorsList = await _provider.loadAuthors();
       if (authorsList != null) {
-        authors(AuthorsModel.groupedFromMap(authorsList));
+        authors(AuthorsModel.fromMap(authorsList));
       }
     } catch (error) {
       _notification.showError(error.toString());
     }
+  }
+
+  @override
+  Future<List<BookModel>> loadAuthorBooksInfo(int id) async {
+    try {
+      var authorsBooks = await _provider.loadAuthorBooksInfo(id);
+      if (authorsBooks != null) {
+        return List.generate(authorsBooks.length, (index) => BookModel.fromMap(authorsBooks[index]));
+      }
+    } catch (error) {
+      _notification.showError(error.toString());
+    }
+    return List.empty();
   }
 }

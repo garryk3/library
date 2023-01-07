@@ -76,7 +76,7 @@ class BookInfo extends StatelessWidget {
           child: Text('Читать'),
         ),
       ),
-      buildTextLine(_model.author),
+      buildTextLine(_model.author ?? ''),
       if (tags != null) buildTextLine(tags),
       buildTextLine(_model.description, maxLines: 5),
       if (_model.seriesName != null) buildTextLine('Серия: ${_model.seriesName}'),

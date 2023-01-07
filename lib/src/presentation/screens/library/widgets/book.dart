@@ -54,13 +54,13 @@ class Book extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    _model.title,
+                    _model.title ?? '',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    _model.author,
+                    _model.author ?? '',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: const TextStyle(fontSize: 13.0),

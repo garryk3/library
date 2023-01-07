@@ -74,6 +74,11 @@ class CalibreProvider extends GetxService implements ICalibreProvider {
   }
 
   @override
+  Future<List<Map<String, Object?>>>? loadAuthorBooksInfo(int id) {
+    return _dbService.rawQuery(selectAuthorBooks, [id, id]);
+  }
+
+  @override
   Future<void> onClose() async {
     await dettachCalibreDb();
   }

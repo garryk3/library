@@ -15,7 +15,7 @@ class AuthorsModel extends Equatable {
     return AuthorsModel._init(authorsList: []);
   }
 
-  factory AuthorsModel.groupedFromMap(List<Map<String, Object?>> data) {
+  factory AuthorsModel.fromMap(List<Map<String, Object?>> data) {
     return AuthorsModel._init(authorsList: makeModifiableResults(data));
   }
 

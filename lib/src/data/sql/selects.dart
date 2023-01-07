@@ -81,3 +81,19 @@ const selectBookSavedInfo = '''
 const selectAuthors = '''
   SELECT * FROM $tableCalibreAuthors
 ''';
+
+const selectAuthorBooks = '''
+  SELECT 
+    $tableCalibreBooks.id as bookId, 
+    title, 
+    isbn, 
+    has_cover as hasCover, 
+    pubdate, 
+    $tableCalibreBooksAuthorsLinks.author as authorId,
+    rating
+  FROM $tableCalibreBooksAuthorsLinks
+    LEFT JOIN $tableCalibreBooks ON $tableCalibreBooksAuthorsLinks.book = $tableCalibreBooks.id
+    LEFT JOIN $tableCalibreBooksRatingsLink on $tableCalibreBooksAuthorsLinks.book = $tableCalibreBooksRatingsLink.rating
+  WHERE $tableCalibreBooksAuthorsLinks.author=?
+  ORDER by $tableCalibreBooks.pubdate
+''';

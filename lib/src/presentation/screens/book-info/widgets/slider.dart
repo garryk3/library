@@ -28,7 +28,7 @@ class BookInfoSlider extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 5.0),
                   decoration: BoxDecoration(color: Colors.black),
                   child: Text(
-                    book.title,
+                    book.title ?? '',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 16.0, color: Colors.white),
                   ),

@@ -18,4 +18,6 @@ abstract class ICalibreProvider {
   Future<void> saveReadBook(int id, bool value);
 
   Future<Map<String, dynamic>?> loadBookSavedInfo(int id);
+
+  Future<List<Map<String, Object?>>>? loadAuthorBooksInfo(int id);
 }

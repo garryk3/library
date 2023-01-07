@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:library/src/presentation/widgets/typography/heading.dart';
+import 'package:library/src/presentation/widgets/typography/text.dart';
 import 'package:library/src/presentation/screens/author/author.controller.dart';
 
 final tabs = [
@@ -31,12 +32,15 @@ class Author extends GetView<AuthorController> {
                 }),
               ),
               InkWell(
-                onTap: () {
-                  print('like authir');
-                },
+                onTap: controller.onTapFavorite,
                 child: Padding(
                   padding: EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.favorite),
+                  child: Obx(() {
+                    return Icon(
+                      Icons.favorite,
+                      color: controller.isFavorite.value ? Colors.blueGrey : Colors.black12,
+                    );
+                  }),
                 ),
               ),
             ],
@@ -52,16 +56,25 @@ class Author extends GetView<AuthorController> {
                     children: [
                       Text('рейтинг'),
                       Text('отзывы'),
-                      Text('книг в базе'),
+                      Text('книг в базе ${controller.books.length}'),
                       Text('книг всего'),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
-                  child: Text(
-                      'author description author description author description author description author description author description'),
-                ),
+                Obx(() {
+                  if (controller.authorDescription.value.isNotEmpty) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 24.0,
+                        horizontal: 12.0,
+                      ),
+                      child: Text(
+                        controller.authorDescription.value,
+                      ),
+                    );
+                  }
+                  return SizedBox.shrink();
+                }),
                 DefaultTabController(
                   length: tabs.length,
                   child: Column(
@@ -84,33 +97,28 @@ class Author extends GetView<AuthorController> {
                         constraints: BoxConstraints(maxHeight: 200.0),
                         child: TabBarView(
                           children: [
-                            for (final tab in tabs)
-                              Padding(
-                                padding: EdgeInsets.only(top: 8.0),
-                                child: ListView(
-                                  children: [
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                    Text(tab),
-                                  ],
-                                ),
-                              ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Obx(() {
+                                if (controller.books.isNotEmpty) {
+                                  return ListView(
+                                    children: controller.books.map((e) => BaseText(text: e.title ?? '')).toList(),
+                                  );
+                                }
+                                return BaseText(text: 'Книги не найдены!');
+                              }),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Obx(() {
+                                if (controller.externalBooks.isNotEmpty) {
+                                  return ListView(
+                                    children: controller.books.map((e) => BaseText(text: e.title ?? '')).toList(),
+                                  );
+                                }
+                                return BaseText(text: 'Книги не найдены!');
+                              }),
+                            ),
                           ],
                         ),
                       )

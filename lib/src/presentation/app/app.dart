@@ -44,7 +44,8 @@ class App extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           getPages: pages,
-          initialRoute: _calibreDirectoryPath != null ? '/home' : '/get-path',
+          // initialRoute: _calibreDirectoryPath != null ? '/home' : '/get-path',
+          initialRoute: _calibreDirectoryPath != null ? '/authors' : '/get-path',
           routingCallback: router.onChangeRoute,
         );
       },
